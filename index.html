@@ -7,9 +7,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;600;700&family=Prompt:wght@600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#0f1117;--sur:#1a1d27;--sur2:#22263a;--bdr:#2e3350;
-  --acc:#4f8ef7;--acc2:#00d4aa;--tx:#e8eaf6;--tx2:#8892b0;
-  --q:#6c63ff;--iv:#f59e0b;--rc:#10b981;
+  --bg:#f0f2f5;--sur:#ffffff;--sur2:#f5f7fa;--bdr:#dde1ea;
+  --acc:#2563eb;--acc2:#059669;--tx:#1a1d2e;--tx2:#64748b;
+  --q:#6c63ff;--iv:#d97706;--rc:#059669;
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
 body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--tx);min-height:100vh;overflow-x:hidden;}
@@ -51,6 +51,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--tx);min-h
 .stat-card{
   background:var(--sur);border:1px solid var(--bdr);
   border-radius:12px;padding:14px 12px;text-align:center;
+  box-shadow:0 1px 4px rgba(0,0,0,.06);
 }
 .stat-num{font-family:'Prompt',sans-serif;font-size:22px;font-weight:700;margin-bottom:2px;}
 .stat-num.q{color:var(--q);}
@@ -69,6 +70,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--tx);min-h
   border-radius:10px;padding:10px 14px;
   display:flex;align-items:center;gap:8px;
   margin-bottom:14px;
+  box-shadow:0 1px 3px rgba(0,0,0,.05);
 }
 .search-bar input{
   background:none;border:none;color:var(--tx);
@@ -119,8 +121,8 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--tx);min-h
   display:flex;align-items:center;justify-content:center;
   font-size:14px;cursor:pointer;
 }
-.card-act-del{background:rgba(255,107,107,.15);color:#ff6b6b;}
-.card-act-del:active{background:#ff6b6b;color:#fff;}
+.card-act-del{background:rgba(239,68,68,.12);color:#ef4444;}
+.card-act-del:active{background:#ef4444;color:#fff;}
 
 .empty-home{
   text-align:center;padding:60px 20px;color:var(--tx2);
@@ -139,6 +141,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--tx);min-h
 .modal-sheet{
   background:var(--sur);border-radius:20px 20px 0 0;
   padding:20px;width:100%;max-width:500px;
+  box-shadow:0 -4px 30px rgba(0,0,0,.15);
 }
 .modal-title{font-family:'Prompt',sans-serif;font-size:16px;font-weight:700;margin-bottom:16px;text-align:center;}
 .modal-options{display:flex;flex-direction:column;gap:10px;}
@@ -170,7 +173,7 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--tx);min-h
 }
 .back-btn{
   display:flex;align-items:center;gap:5px;
-  background:none;border:none;color:var(--acc);
+  background:none;border:none;color:var(--acc);font-weight:700;
   font-family:'Sarabun',sans-serif;font-size:14px;font-weight:700;
   cursor:pointer;padding:8px 4px;
 }
@@ -200,14 +203,14 @@ label{font-size:11px;color:var(--tx2);font-weight:600;}
 input,textarea,select{background:var(--sur2);border:1px solid var(--bdr);border-radius:7px;color:var(--tx);padding:9px 10px;font-family:'Sarabun',sans-serif;font-size:13px;outline:none;transition:border-color .2s;width:100%;}
 input:focus,textarea:focus,select:focus{border-color:var(--acc);}
 textarea{resize:vertical;min-height:50px;}
-select option{background:#1a1d27;}
+select option{background:#ffffff;}
 .ih{display:grid;grid-template-columns:22px 1fr 50px 76px 26px;gap:4px;margin-bottom:4px;}
 .ih span{font-size:10px;color:var(--tx2);font-weight:700;text-transform:uppercase;}
 .ir{display:grid;grid-template-columns:22px 1fr 50px 76px 26px;gap:4px;margin-bottom:5px;align-items:center;}
 .ir input{padding:7px 7px;font-size:12px;}
 .ir .seq{font-size:12px;color:var(--tx2);text-align:center;}
-.xbtn{background:none;border:1px solid #ff6b6b;color:#ff6b6b;border-radius:6px;width:26px;height:33px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;}
-.xbtn:active{background:#ff6b6b;color:#fff;}
+.xbtn{background:none;border:1px solid #ef4444;color:#ef4444;border-radius:6px;width:26px;height:33px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;}
+.xbtn:active{background:#ef4444;color:#fff;}
 .add-btn{width:100%;padding:9px;background:transparent;border:1px dashed var(--bdr);border-radius:8px;color:var(--tx2);font-family:'Sarabun',sans-serif;font-size:13px;cursor:pointer;margin-top:3px;}
 .add-btn:active{border-color:var(--acc);color:var(--acc);}
 .tot-box{background:var(--sur2);border-radius:10px;padding:12px;margin-top:10px;display:flex;flex-direction:column;gap:6px;}
@@ -216,13 +219,17 @@ select option{background:#1a1d27;}
 .tr.grand{border-top:1px solid var(--bdr);padding-top:8px;font-size:15px;font-weight:700;color:var(--acc2);}
 .cond-row{display:flex;gap:5px;align-items:center;margin-bottom:5px;}
 .cond-row input{font-size:12px;padding:7px 8px;}
-.cond-del{background:none;border:1px solid #ff6b6b;color:#ff6b6b;border-radius:5px;padding:4px 8px;font-size:13px;cursor:pointer;flex-shrink:0;}
+.cond-del{background:none;border:1px solid #ef4444;color:#ef4444;border-radius:5px;padding:4px 8px;font-size:13px;cursor:pointer;flex-shrink:0;}
 
 /* PREVIEW */
-.prev-panel{flex:1;background:#2a2d3a;overflow:auto;display:flex;justify-content:center;padding:24px 12px;}
+.prev-panel{flex:1;background:#e2e6ed;overflow:auto;display:flex;justify-content:flex-start;flex-direction:column;align-items:center;padding:24px 12px;}
 
 /* ── A4 DOC ── */
-#doc{width:780px;min-height:1050px;background:#fff;color:#000;box-shadow:0 16px 50px rgba(0,0,0,.5);font-family:'Sarabun',sans-serif;font-size:13px;line-height:1.5;}
+#doc-scaler{
+  width:794px;
+  transform-origin:top center;
+}
+#doc{width:794px;min-height:1123px;background:#fff;color:#000;box-shadow:0 8px 32px rgba(0,0,0,.18);font-family:'Sarabun',sans-serif;font-size:13.5px;line-height:1.55;}
 
 /* Quotation (letter style) */
 .q-wrap{padding:40px 52px;}
@@ -247,46 +254,76 @@ select option{background:#1a1d27;}
 .q-sig{text-align:center;font-size:13px;}
 .q-sig-line{width:220px;border-top:1px solid #000;margin:0 auto 4px;}
 
-/* Invoice (table style) */
-.iv-wrap{padding:24px 28px;}
-.iv-hdr{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;}
-.iv-co-name{font-size:20px;font-weight:700;margin-bottom:2px;}
-.iv-co-en{font-size:13px;color:#333;margin-bottom:5px;}
-.iv-co-addr{font-size:12px;color:#333;line-height:1.6;}
-.iv-type-title{font-size:14px;font-weight:700;line-height:1.8;text-align:right;}
-.iv-ref{font-size:12.5px;margin-top:8px;text-align:right;}
-.iv-cust{border:1px solid #000;}
-.iv-cust-row{display:flex;border-bottom:1px solid #000;}
-.iv-cust-row:last-child{border-bottom:none;}
-.iv-cust-l{flex:1;padding:7px 10px;border-right:1px solid #000;}
-.iv-cust-r{width:235px;padding:7px 10px;font-size:12px;line-height:1.8;}
-.iv-cl{font-size:12px;font-weight:700;}
-.iv-cv{font-size:12px;}
-table.iv-tbl{width:100%;border-collapse:collapse;font-size:12.5px;}
-table.iv-tbl th{background:#fff;border:1px solid #000;padding:7px 8px;text-align:center;font-weight:700;font-size:12px;}
-table.iv-tbl td{border:1px solid #000;padding:6px 8px;vertical-align:top;}
-table.iv-tbl td.c{text-align:center;}table.iv-tbl td.r{text-align:right;}
-.iv-bot{display:flex;border:1px solid #000;border-top:none;}
-.iv-words{flex:1;padding:8px 10px;border-right:1px solid #000;}
-.iv-words-l{font-size:11.5px;font-weight:700;margin-bottom:2px;}
-.iv-words-v{font-size:12px;}
-.iv-tots{width:228px;}
-.iv-tot-row{display:flex;justify-content:space-between;border-bottom:1px solid #000;padding:6px 10px;font-size:12.5px;}
-.iv-tot-row:last-child{border-bottom:none;font-weight:700;}
-.iv-rem{margin-top:10px;font-size:12px;}
-.iv-rem-title{font-weight:700;margin-bottom:3px;font-size:12.5px;}
-.iv-sig-row{display:grid;grid-template-columns:1fr 1fr 1fr;border:1px solid #000;margin-top:10px;}
-.iv-sig-cell{padding:10px;border-right:1px solid #000;text-align:center;font-size:12px;}
+/* ── INVOICE TEMPLATE ── */
+.iv-wrap{padding:22px 26px;font-size:12.5px;}
+
+/* Header */
+.iv-hdr{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;}
+.iv-co-name{font-size:19px;font-weight:700;margin-bottom:1px;}
+.iv-co-en{font-size:12px;color:#333;margin-bottom:4px;}
+.iv-co-addr{font-size:11.5px;color:#333;line-height:1.6;}
+.iv-hdr-right{text-align:right;}
+.iv-type-lines{font-size:13px;font-weight:700;line-height:1.9;text-align:right;}
+.iv-ref{font-size:12px;margin-top:6px;text-align:right;}
+
+/* Outer box wrapping cust + table + totals */
+.iv-box{border:1px solid #000;margin-bottom:8px;}
+
+/* Customer row inside iv-box */
+.iv-cust{display:flex;border-bottom:1px solid #000;}
+.iv-cust-l{flex:1;padding:7px 10px;border-right:1px solid #000;min-height:80px;}
+.iv-cust-r{width:230px;padding:7px 10px;font-size:12px;line-height:1.85;}
+.iv-cust-r-note{font-size:10px;color:#777;text-align:right;margin-bottom:2px;}
+.iv-lbl{font-size:12px;font-weight:700;}
+.iv-val{font-size:12px;margin-bottom:4px;}
+
+/* Items table — no outer border (iv-box handles it) */
+table.iv-tbl{width:100%;border-collapse:collapse;font-size:12px;}
+table.iv-tbl thead tr{background:#fff;}
+table.iv-tbl th{
+  border-top:none;border-bottom:1px solid #000;
+  border-left:none;border-right:1px solid #000;
+  padding:6px 8px;text-align:center;font-weight:700;font-size:11.5px;
+}
+table.iv-tbl th:last-child{border-right:none;}
+table.iv-tbl td{
+  border-top:none;border-bottom:1px solid #000;
+  border-left:none;border-right:1px solid #000;
+  padding:5px 8px;vertical-align:top;
+}
+table.iv-tbl td:last-child{border-right:none;}
+table.iv-tbl tr:last-child td{border-bottom:none;}
+table.iv-tbl td.c{text-align:center;}
+table.iv-tbl td.r{text-align:right;}
+
+/* Bottom totals row */
+.iv-bot{display:flex;border-top:1px solid #000;}
+.iv-words-cell{flex:1;padding:7px 10px;border-right:1px solid #000;}
+.iv-words-lbl{font-size:11px;font-weight:700;margin-bottom:3px;}
+.iv-words-val{font-size:12px;}
+.iv-tots{width:230px;}
+.iv-tot-row{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #000;padding:5px 10px;font-size:12px;}
+.iv-tot-row:last-child{border-bottom:none;font-weight:700;font-size:13px;}
+.iv-tot-label{font-size:11.5px;}
+
+/* Remarks */
+.iv-rem{font-size:12px;margin-bottom:8px;}
+.iv-rem-title{font-weight:700;margin-bottom:4px;}
+.iv-rem-row{margin-bottom:2px;line-height:1.5;}
+
+/* Signature row */
+.iv-sig-row{display:grid;grid-template-columns:1fr 1fr 1fr;border:1px solid #000;}
+.iv-sig-cell{padding:10px 8px;border-right:1px solid #000;text-align:center;font-size:12px;}
 .iv-sig-cell:last-child{border-right:none;}
-.iv-sig-space{height:48px;}
-.iv-sig-line{border-top:1px solid #000;margin:0 18px 4px;}
-.iv-sig-date{font-size:11px;color:#555;}
+.iv-sig-space{height:46px;}
+.iv-sig-line{border-top:1px solid #000;margin:0 16px 5px;}
+.iv-sig-date{font-size:11px;color:#555;margin-top:3px;}
 
 /* TOAST */
-.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:var(--sur);border:1px solid var(--bdr);border-radius:10px;padding:11px 20px;font-size:13px;color:var(--tx);box-shadow:0 8px 30px rgba(0,0,0,.4);z-index:999;display:none;white-space:nowrap;}
+.toast{position:fixed;top:80px;left:50%;transform:translateX(-50%);background:#1e293b;border:1px solid #334155;border-radius:10px;padding:12px 22px;font-size:13px;color:#f1f5f9;box-shadow:0 8px 30px rgba(0,0,0,.35);z-index:9999;display:none;white-space:nowrap;max-width:90vw;text-align:center;}
 .toast.on{display:block;}
-.toast.ok{border-color:var(--acc2);}
-.toast.err{border-color:#ff6b6b;}
+.toast.ok{border-color:#10b981;}
+.toast.err{border-color:#ef4444;}
 
 @media(max-width:900px){
   .editor-body{flex-direction:column;overflow:visible;}
@@ -296,15 +333,13 @@ table.iv-tbl td.c{text-align:center;}table.iv-tbl td.r{text-align:right;}
   .editor-body.show-prev .prev-panel{display:flex;}
   .form-panel{width:100%;min-width:unset;border-right:none;border-bottom:1px solid var(--bdr);}
   .prev-panel{min-height:500px;padding:16px 4px;}
-  #doc{width:680px;}
+  /* doc scales via JS */
   .view-toggle{display:flex;}
   .home-stats{grid-template-columns:repeat(3,1fr);}
 }
 @media(max-width:520px){
-  #doc{width:100%;min-width:320px;font-size:11.5px;}
-  .q-wrap,.iv-wrap{padding:20px 16px;}
-  .iv-hdr{flex-direction:column;gap:8px;}
-  .iv-type-title{text-align:left;}
+  .q-wrap,.iv-wrap{padding:40px 52px;}
+  .iv-hdr{flex-direction:row;}
   .editor-actions .btn span{display:none;}
 }
 @media print{
@@ -328,6 +363,7 @@ table.iv-tbl td.c{text-align:center;}table.iv-tbl td.r{text-align:right;}
   <div class="home-nav">
     <span class="logo">📄 DocMaker TH</span>
     <button class="new-doc-btn" onclick="showNewModal()">＋ สร้างเอกสาร</button>
+    <button id="co-nav-btn" onclick="openCompanySettings()" style="background:var(--sur2);border:1px solid var(--bdr);color:var(--tx2);border-radius:10px;padding:10px 14px;font-family:Sarabun,sans-serif;font-size:13px;font-weight:700;cursor:pointer;">⚙️ ข้อมูลบริษัท</button>
   </div>
   <div class="home-body">
     <div class="home-stats" id="home-stats"></div>
@@ -434,10 +470,23 @@ table.iv-tbl td.c{text-align:center;}table.iv-tbl td.r{text-align:right;}
 
       <div id="iv-extra" style="display:none">
         <div class="sec">ตัวเลือกเอกสาร</div>
-        <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:8px">
-          <label style="display:flex;align-items:center;gap:7px;cursor:pointer;font-size:13px"><input type="checkbox" id="ck-r" onchange="render()" checked> ต้นฉบับใบเสร็จรับเงิน</label>
-          <label style="display:flex;align-items:center;gap:7px;cursor:pointer;font-size:13px"><input type="checkbox" id="ck-t" onchange="render()" checked> ต้นฉบับใบกำกับภาษี</label>
-          <label style="display:flex;align-items:center;gap:7px;cursor:pointer;font-size:13px"><input type="checkbox" id="ck-d" onchange="render()"> ต้นฉบับใบส่งของ</label>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:8px">
+          <div style="display:flex;align-items:center;gap:10px;background:var(--sur2);border-radius:8px;padding:10px 12px;">
+            <input type="checkbox" id="ck-r" onchange="render()" checked style="width:18px;height:18px;flex-shrink:0;accent-color:var(--acc);">
+            <span style="font-size:13px;color:var(--tx);">ต้นฉบับใบเสร็จรับเงิน</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;background:var(--sur2);border-radius:8px;padding:10px 12px;">
+            <input type="checkbox" id="ck-t" onchange="render()" checked style="width:18px;height:18px;flex-shrink:0;accent-color:var(--acc);">
+            <span style="font-size:13px;color:var(--tx);">ต้นฉบับใบกำกับภาษี</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;background:var(--sur2);border-radius:8px;padding:10px 12px;">
+            <input type="checkbox" id="ck-d" onchange="render()" style="width:18px;height:18px;flex-shrink:0;accent-color:var(--acc);">
+            <span style="font-size:13px;color:var(--tx);">ต้นฉบับใบส่งของ</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;background:var(--sur2);border-radius:8px;padding:10px 12px;">
+            <input type="checkbox" id="ck-copy" onchange="render()" style="width:18px;height:18px;flex-shrink:0;accent-color:var(--acc);">
+            <span style="font-size:13px;color:var(--tx);">สำเนา</span>
+          </div>
         </div>
         <div class="sec">หมายเหตุท้ายเอกสาร</div>
         <div id="remark-list"></div>
@@ -480,12 +529,64 @@ table.iv-tbl td.c{text-align:center;}table.iv-tbl td.r{text-align:right;}
 
     <!-- PREVIEW PANEL -->
     <div class="prev-panel" id="prev-panel">
-      <div id="doc"></div>
+      <div id="doc-scaler"><div id="doc"></div></div>
     </div>
   </div>
 </div>
 
 <div class="toast" id="toast"></div>
+
+<!-- COMPANY SETTINGS MODAL -->
+<div class="modal-overlay" id="co-modal" onclick="closeCompanySettings()">
+  <div class="modal-sheet" onclick="event.stopPropagation()" style="max-height:85vh;overflow-y:auto;">
+    <div class="modal-title">⚙️ ข้อมูลบริษัท / ร้านค้า</div>
+    <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px;">
+      <div style="display:flex;flex-direction:column;gap:3px;">
+        <label style="font-size:11px;color:var(--tx2);font-weight:600;">ชื่อบริษัท / ร้านค้า</label>
+        <input id="co-cname" type="text" placeholder="ส. ไทยเจริญ" style="background:var(--sur2);border:1px solid var(--bdr);border-radius:7px;color:var(--tx);padding:10px;font-family:Sarabun,sans-serif;font-size:13px;outline:none;">
+      </div>
+      <div style="display:flex;flex-direction:column;gap:3px;">
+        <label style="font-size:11px;color:var(--tx2);font-weight:600;">ชื่อภาษาอังกฤษ</label>
+        <input id="co-cen" type="text" placeholder="S. THAI CHAREON" style="background:var(--sur2);border:1px solid var(--bdr);border-radius:7px;color:var(--tx);padding:10px;font-family:Sarabun,sans-serif;font-size:13px;outline:none;">
+      </div>
+      <div style="display:flex;flex-direction:column;gap:3px;">
+        <label style="font-size:11px;color:var(--tx2);font-weight:600;">ที่อยู่</label>
+        <textarea id="co-caddr" rows="3" placeholder="147/9 หมู่1 ถ.เทพารักษ์ ต.เทพารักษ์ อ.เมือง จ.สมุทรปราการ 10270" style="background:var(--sur2);border:1px solid var(--bdr);border-radius:7px;color:var(--tx);padding:10px;font-family:Sarabun,sans-serif;font-size:13px;outline:none;resize:vertical;"></textarea>
+      </div>
+      <div style="display:flex;gap:8px;">
+        <div style="display:flex;flex-direction:column;gap:3px;flex:1;">
+          <label style="font-size:11px;color:var(--tx2);font-weight:600;">โทรศัพท์</label>
+          <input id="co-ctel" type="tel" placeholder="086-332-3929" style="background:var(--sur2);border:1px solid var(--bdr);border-radius:7px;color:var(--tx);padding:10px;font-family:Sarabun,sans-serif;font-size:13px;outline:none;">
+        </div>
+        <div style="display:flex;flex-direction:column;gap:3px;flex:1;">
+          <label style="font-size:11px;color:var(--tx2);font-weight:600;">เลขผู้เสียภาษี</label>
+          <input id="co-ctax" type="text" placeholder="0000000000000" style="background:var(--sur2);border:1px solid var(--bdr);border-radius:7px;color:var(--tx);padding:10px;font-family:Sarabun,sans-serif;font-size:13px;outline:none;">
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:3px;">
+        <label style="font-size:11px;color:var(--tx2);font-weight:600;">ทะเบียนการค้า</label>
+        <input id="co-creg" type="text" placeholder="อ. 8588 เลขประจำตัวผู้เสียภาษี 3 1009..." style="background:var(--sur2);border:1px solid var(--bdr);border-radius:7px;color:var(--tx);padding:10px;font-family:Sarabun,sans-serif;font-size:13px;outline:none;">
+      </div>
+      <div style="display:flex;gap:8px;">
+        <div style="display:flex;flex-direction:column;gap:3px;flex:1;">
+          <label style="font-size:11px;color:var(--tx2);font-weight:600;">ธนาคาร</label>
+          <input id="co-bank" type="text" placeholder="ธ. ทีบี" style="background:var(--sur2);border:1px solid var(--bdr);border-radius:7px;color:var(--tx);padding:10px;font-family:Sarabun,sans-serif;font-size:13px;outline:none;">
+        </div>
+        <div style="display:flex;flex-direction:column;gap:3px;flex:1;">
+          <label style="font-size:11px;color:var(--tx2);font-weight:600;">ชื่อบัญชี</label>
+          <input id="co-bacname" type="text" placeholder="ชื่อบัญชี" style="background:var(--sur2);border:1px solid var(--bdr);border-radius:7px;color:var(--tx);padding:10px;font-family:Sarabun,sans-serif;font-size:13px;outline:none;">
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:3px;">
+        <label style="font-size:11px;color:var(--tx2);font-weight:600;">เลขที่บัญชี</label>
+        <input id="co-bacno" type="text" placeholder="924-9-84520-8" style="background:var(--sur2);border:1px solid var(--bdr);border-radius:7px;color:var(--tx);padding:10px;font-family:Sarabun,sans-serif;font-size:13px;outline:none;">
+      </div>
+    </div>
+    <button onclick="saveCompanySettings()" style="width:100%;padding:14px;border-radius:12px;border:none;background:#2e7d32;color:#fff;font-family:Sarabun,sans-serif;font-size:15px;font-weight:700;cursor:pointer;margin-bottom:8px;">💾 บันทึกข้อมูลบริษัท</button>
+    <button onclick="debugCompany()" style="width:100%;padding:12px;border-radius:12px;border:1px solid var(--bdr);background:transparent;color:var(--tx2);font-family:Sarabun,sans-serif;font-size:13px;cursor:pointer;margin-bottom:8px;">🔍 ทดสอบ: ดูข้อมูลที่บันทึก</button>
+    <button class="modal-cancel" onclick="closeCompanySettings()">ยกเลิก</button>
+  </div>
+</div>
 
 <script>
 var KEY='dm3_docs';
@@ -504,7 +605,7 @@ function fdShort(s){if(!s)return '–';var d=new Date(s);return d.toLocaleDateSt
 function esc(s){return (s||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');}
 function getDocs(){try{return JSON.parse(localStorage.getItem(KEY)||'[]');}catch(e){return[];}}
 function saveDocs(d){localStorage.setItem(KEY,JSON.stringify(d));}
-function toast(msg,t){var el=document.getElementById('toast');el.textContent=msg;el.className='toast on'+(t?' '+t:'');clearTimeout(el._t);el._t=setTimeout(function(){el.classList.remove('on');},3000);}
+function toast(msg,t){var el=document.getElementById('toast');el.textContent=msg;el.className='toast on'+(t?' '+t:'');clearTimeout(el._t);var dur=(t==='err')?5000:3000;el._t=setTimeout(function(){el.classList.remove('on');},dur);}
 
 function bahtText(n){
   var num=Math.round(+n||0);
@@ -567,6 +668,15 @@ function renderHome(){
   var icons={quotation:'📝',invoice:'🧾',receipt:'✅'};
   var labels={quotation:'ใบเสนอราคา',invoice:'ใบกำกับภาษี',receipt:'ใบเสร็จรับเงิน'};
   var typeClass={quotation:'q',invoice:'iv',receipt:'rc'};
+  // Show badge on company button if no data
+  var coBtn=document.getElementById('co-nav-btn');
+  if(coBtn){
+    var hasCo=!!localStorage.getItem('dm3_company')&&!!getCompany().cname;
+    coBtn.style.borderColor=hasCo?'var(--bdr)':'#ef4444';
+    coBtn.style.color=hasCo?'var(--tx2)':'#ef4444';
+    coBtn.textContent=hasCo?'⚙️ ข้อมูลบริษัท':'⚙️ ข้อมูลบริษัท ⚠️';
+  }
+
   grid.innerHTML=filtered.map(function(d){
     var dt=new Date(d.at);
     var ds=dt.toLocaleDateString('th-TH',{year:'numeric',month:'short',day:'numeric'});
@@ -605,13 +715,16 @@ function createDoc(t){
   var yr=new Date().getFullYear();
   var prefix={quotation:'QT',invoice:'IV',receipt:'RC'}[t]||'DOC';
   clearFields();
+  fillCompanyToForm();
   document.getElementById('f-docno').value=prefix+'-'+yr+'-'+n;
   document.getElementById('f-date').value=today;
   document.getElementById('f-due').value=today;
   document.getElementById('f-vat').value='7';
   setEditorType(t);
-  renderItems();renderConds();renderRemarks();render();
+  renderItems();renderConds();renderRemarks();
+  render();
   showScreen('screen-editor');
+  setTimeout(scaleDoc,100);
 }
 
 function openDoc(id){
@@ -621,6 +734,7 @@ function openDoc(id){
   currentDocId=id;
   setData(d.data);
   showScreen('screen-editor');
+  setTimeout(scaleDoc,100);
 }
 
 function deleteDocHome(id){
@@ -652,6 +766,7 @@ function showView(v){
   eb.className='editor-body '+(v==='form'?'show-form':'show-prev');
   document.getElementById('vt-form').classList.toggle('on',v==='form');
   document.getElementById('vt-prev').classList.toggle('on',v==='prev');
+  setTimeout(scaleDoc,50);
 }
 
 function calc(){
@@ -671,6 +786,7 @@ function render(){
     document.getElementById('t-sub').textContent=fmt(t.sub)+' ฿';
     document.getElementById('t-grand').textContent=fmt(t.grand)+' ฿';
     if(dtype==='quotation')renderQ(t);else renderIV(t);
+    setTimeout(scaleDoc,0);
   }catch(e){console.log('render:',e);}
 }
 
@@ -711,71 +827,185 @@ function renderQ(t){
 }
 
 function renderIV(t){
-  var cname=g('f-cname')||'ชื่อบริษัท';
-  var typeLines='';
-  if(chk('ck-r'))typeLines+='ต้นฉบับใบเสร็จรับเงิน<br>';
-  if(chk('ck-t'))typeLines+='ต้นฉบับใบกำกับภาษี<br>';
-  if(chk('ck-d'))typeLines+='ต้นฉบับใบส่งของ<br>';
-  if(!typeLines)typeLines=(dtype==='receipt'?'ใบเสร็จรับเงิน':'ใบกำกับภาษี')+'<br>';
-  var rows='';
+  var cname = g('f-cname')||'ชื่อบริษัท';
+  var cen   = g('f-cen')||'';
+  var caddr = esc(g('f-caddr')||'').replace(/\n/g,'<br>');
+  var creg  = g('f-creg')||'';
+  var ctel  = g('f-ctel')||'';
+
+  // Document type lines
+  var parts=[];
+  if(chk('ck-r')) parts.push('ต้นฉบับใบเสร็จรับเงิน');
+  if(chk('ck-t')) parts.push('ต้นฉบับใบกำกับภาษี');
+  if(chk('ck-d')) parts.push('ต้นฉบับใบส่งของ');
+  if(chk('ck-copy')) parts.push('สำเนา');
+  if(!parts.length) parts.push(dtype==='receipt'?'ใบเสร็จรับเงิน':'ใบกำกับภาษี');
+  var typeLinesHtml = parts.map(function(p){ return p; }).join(' &nbsp;/&nbsp; ');
+
+  // ── Shared cell style ──
+  var b  = 'border:1px solid #000;';
+  var bl = 'border-left:none;';
+  var bt = 'border-top:none;';
+  var p  = 'padding:6px 8px;';
+  var tblStyle = 'border-collapse:collapse;width:100%;font-size:12px;';
+
+  // ── Item rows ──
+  var rows = '';
   items.forEach(function(it,i){
-    var tot=(+it.q||0)*(+it.u||0);
-    rows+='<tr><td class="c">'+(i+1)+'</td><td>'+esc(it.d)+'</td><td class="c">'+fmt(it.q)+'</td><td class="r">'+fmt(it.u)+'</td><td class="r">'+fmt(tot)+'</td></tr>';
+    var tot = (parseFloat(it.q)||0)*(parseFloat(it.u)||0);
+    rows +=
+      '<tr>'+
+        '<td style="'+b+bt+'text-align:center;width:38px;'+p+'">'+(i+1)+'</td>'+
+        '<td style="'+b+bt+bl+p+'">'+esc(it.d)+'</td>'+
+        '<td style="'+b+bt+bl+'text-align:center;width:66px;'+p+'">'+(parseFloat(it.q)>0?fmt(it.q):'')+'</td>'+
+        '<td style="'+b+bt+bl+'text-align:right;width:90px;'+p+'">'+(parseFloat(it.u)>0?fmt(it.u):'')+'</td>'+
+        '<td style="'+b+bt+bl+'text-align:right;width:90px;'+p+'">'+(tot>0?fmt(tot):'')+'</td>'+
+      '</tr>';
   });
-  var pad=Math.max(0,8-items.length);
-  for(var i=0;i<pad;i++)rows+='<tr><td>&nbsp;</td><td></td><td></td><td></td><td></td></tr>';
-  var remHtml='';
-  if(remarks.length>0){remHtml='<div class="iv-rem"><div class="iv-rem-title">หมายเหตุ</div>';remarks.forEach(function(r,i){if(r)remHtml+='<div>('+(i+1)+') '+esc(r)+'</div>';});remHtml+='</div>';}
-  document.getElementById('doc').innerHTML=
-    '<div class="iv-wrap">'+
-    '<div class="iv-hdr">'+
-      '<div><div class="iv-co-name">'+esc(cname)+'</div>'+
-      (g('f-cen')?'<div class="iv-co-en">'+esc(g('f-cen'))+'</div>':'')+
-      '<div class="iv-co-addr">'+esc(g('f-caddr')).replace(/\n/g,'<br>')+(g('f-creg')?'<br>ทะเบียนการค้า '+esc(g('f-creg')):'')+(g('f-ctel')?'<br>โทร : '+esc(g('f-ctel')):'')+'</div></div>'+
-      '<div><div class="iv-type-title">'+typeLines+'</div>'+
-      '<div class="iv-ref">เล่มที่ '+(g('f-docbook')||'–')+' เลขที่ '+(g('f-docno')||'–')+'</div></div>'+
-    '</div>'+
-    '<div class="iv-cust">'+
-      '<div class="iv-cust-row">'+
-        '<div class="iv-cust-l">'+
-          '<div class="iv-cl">นามลูกค้า / Name</div><div class="iv-cv">'+esc(g('f-bname')||'–')+'</div>'+
-          '<div style="margin-top:6px"><div class="iv-cl">ที่อยู่ / Address</div><div class="iv-cv">'+esc(g('f-baddr')||'–').replace(/\n/g,' ')+'</div></div>'+
-          '<div style="margin-top:6px"><div class="iv-cl">เลขประจำตัวผู้เสียภาษี : '+(g('f-btax')||'–')+'</div></div>'+
-        '</div>'+
-        '<div class="iv-cust-r">'+
-          '<div style="text-align:right;font-size:11px;color:#888;margin-bottom:4px">(เอกสารออกเป็นชุด)</div>'+
-          '<div>วันที่ / Date &nbsp; '+fdShort(g('f-date'))+'</div>'+
-          '<div>กำหนดชำระเงิน / Term &nbsp; '+esc(g('f-term'))+'</div>'+
-          '<div>ครบกำหนด / Due Date &nbsp; '+fdShort(g('f-due'))+'</div>'+
-        '</div>'+
+  // Padding empty rows
+  var pad = Math.max(0,8-items.length);
+  for(var i=0;i<pad;i++){
+    rows +=
+      '<tr>'+
+        '<td style="'+b+bt+'width:38px;height:22px;'+p+'">&nbsp;</td>'+
+        '<td style="'+b+bt+bl+p+'"></td>'+
+        '<td style="'+b+bt+bl+'width:66px;'+p+'"></td>'+
+        '<td style="'+b+bt+bl+'width:90px;'+p+'"></td>'+
+        '<td style="'+b+bt+bl+'width:90px;'+p+'"></td>'+
+      '</tr>';
+  }
+
+  // ── Totals rows (rowspan for "words" cell) ──
+  var totalRows = 3 + (t.disc>0?1:0);
+  var totRows = '';
+
+  // First totals row: words cell (rowspan) + Sub Total
+  totRows +=
+    '<tr>'+
+      '<td colspan="3" rowspan="'+totalRows+'" style="'+b+bt+p+'vertical-align:top;">'+
+        '<div style="font-size:11px;font-weight:700;margin-bottom:4px">จำนวนเงินด้วยอักษร</div>'+
+        '<div style="font-size:12px">'+bahtText(t.grand)+'</div>'+
+      '</td>'+
+      '<td style="'+b+bt+bl+p+'">รวมเงิน<br><span style="font-size:11px">Sub Total</span></td>'+
+      '<td style="'+b+bt+bl+'text-align:right;'+p+'">'+fmt(t.sub)+'</td>'+
+    '</tr>';
+
+  if(t.disc>0){
+    totRows +=
+      '<tr>'+
+        '<td style="'+b+bt+bl+p+'">ส่วนลด</td>'+
+        '<td style="'+b+bt+bl+'text-align:right;'+p+'">- '+fmt(t.disc)+'</td>'+
+      '</tr>';
+  }
+
+  totRows +=
+    '<tr>'+
+      '<td style="'+b+bt+bl+p+'">ภาษีมูลค่าเพิ่ม<br><span style="font-size:11px">V.A.T.</span></td>'+
+      '<td style="'+b+bt+bl+'text-align:right;'+p+'">'+fmt(t.vat)+'</td>'+
+    '</tr>'+
+    '<tr>'+
+      '<td style="'+b+bt+bl+'font-weight:700;'+p+'">ยอดเงินสุทธิ<br><span style="font-size:11px">Net Total</span></td>'+
+      '<td style="'+b+bt+bl+'text-align:right;font-weight:700;'+p+'">'+fmt(t.grand)+'</td>'+
+    '</tr>';
+
+  // ── Remarks ──
+  var remHtml = '';
+  if(remarks.length>0){
+    remHtml = '<div style="font-size:12px;margin:8px 0;">';
+    remHtml += '<div style="font-weight:700;margin-bottom:4px">หมายเหตุ</div>';
+    remarks.forEach(function(r,i){ if(r) remHtml += '<div style="margin-bottom:2px">('+(i+1)+') '+esc(r)+'</div>'; });
+    remHtml += '</div>';
+  }
+
+  // ── BUILD HTML ──
+  document.getElementById('doc').innerHTML =
+  '<div class="iv-wrap">'+
+
+  // HEADER
+  '<div class="iv-hdr">'+
+    '<div>'+
+      '<div class="iv-co-name">'+esc(cname)+'</div>'+
+      (cen?'<div class="iv-co-en">'+esc(cen)+'</div>':'')+
+      '<div class="iv-co-addr">'+
+        caddr+
+        (creg?'<br>ทะเบียนการค้าเลขที่ '+esc(creg):'')+
+        (ctel?'<br>โทร : '+esc(ctel):'')+
       '</div>'+
     '</div>'+
-    '<table class="iv-tbl"><thead><tr>'+
-      '<th style="width:34px">ลำดับ<br>Item</th>'+
-      '<th>รายการ<br>Description</th>'+
-      '<th style="width:68px">จำนวน<br>Quantity</th>'+
-      '<th style="width:88px">ราคาต่อหน่วย<br>Unit price</th>'+
-      '<th style="width:88px">จำนวนเงิน<br>Amount</th>'+
-    '</tr></thead><tbody>'+rows+'</tbody></table>'+
-    '<div class="iv-bot">'+
-      '<div class="iv-words"><div class="iv-words-l">จำนวนเงินด้วยอักษร</div><div class="iv-words-v">'+bahtText(t.grand)+'</div></div>'+
-      '<div class="iv-tots">'+
-        '<div class="iv-tot-row"><span>รวมเงิน Sub Total</span><span>'+fmt(t.sub)+'</span></div>'+
-        (t.disc>0?'<div class="iv-tot-row"><span>ส่วนลด</span><span>- '+fmt(t.disc)+'</span></div>':'')+
-        '<div class="iv-tot-row"><span>ภาษีมูลค่าเพิ่ม V.A.T.</span><span>'+fmt(t.vat)+'</span></div>'+
-        '<div class="iv-tot-row"><span>ยอดเงินสุทธิ Net Total</span><span>'+fmt(t.grand)+'</span></div>'+
-      '</div>'+
+    '<div class="iv-hdr-right">'+
+      '<div class="iv-type-lines">'+typeLinesHtml+'</div>'+
+      '<div class="iv-ref">เล่มที่ '+(g('f-docbook')||'–')+' &nbsp; เลขที่ '+(g('f-docno')||'–')+'</div>'+
     '</div>'+
-    remHtml+
-    '<div class="iv-sig-row">'+
-      '<div class="iv-sig-cell"><div class="iv-sig-space"></div><div class="iv-sig-line"></div><div>ผู้รับเงิน / Collector</div><div class="iv-sig-date">วันที่ / Date ..................</div></div>'+
-      '<div class="iv-sig-cell"><div class="iv-sig-space"></div><div class="iv-sig-line"></div><div>ผู้ส่งของ / Delivered By</div><div class="iv-sig-date">วันที่ / Date ..................</div></div>'+
-      '<div class="iv-sig-cell"><div class="iv-sig-space"></div><div class="iv-sig-line"></div><div>ผู้รับของ / Receiver</div><div class="iv-sig-date">วันที่ / Date ..................</div></div>'+
-    '</div>'+
-    '</div>';
+  '</div>'+
+
+  // MASTER TABLE (customer + thead + items + totals all in one table)
+  '<table style="'+tblStyle+'margin-bottom:8px">'+
+
+    // ROW 0: Customer info + Date
+    '<tr>'+
+      '<td colspan="4" style="'+b+p+'vertical-align:top;">'+
+        '<div><b>นามลูกค้า / Name</b> &nbsp; '+esc(g('f-bname')||'–')+'</div>'+
+        '<br>'+
+        '<div><b>ที่อยู่ / Address</b> &nbsp; '+esc(g('f-baddr')||'–').replace(/\n/g,' ')+'</div>'+
+        '<br>'+
+        '<div><b>เลขประจำตัวผู้เสียภาษี :</b> &nbsp; '+(g('f-btax')||'–')+'</div>'+
+      '</td>'+
+      '<td style="'+b+bl+'width:220px;'+p+'vertical-align:top;font-size:12px;line-height:1.85">'+
+        '<div style="font-size:10px;color:#777;text-align:right;margin-bottom:3px">(เอกสารออกเป็นชุด)</div>'+
+        'วันที่ / Date &nbsp; '+fdShort(g('f-date'))+'<br>'+
+        'กำหนดชำระเงิน / Term &nbsp; '+esc(g('f-term')||'–')+'<br>'+
+        'ครบกำหนดชำระเงิน / Due Date &nbsp; '+fdShort(g('f-due'))+
+      '</td>'+
+    '</tr>'+
+
+    // ROW 1: Table header
+    '<tr>'+
+      '<th style="'+b+bt+'text-align:center;font-size:11.5px;'+p+'width:38px">ลำดับ<br>Item</th>'+
+      '<th style="'+b+bt+bl+'text-align:center;font-size:11.5px;'+p+'">รายการ<br>Description</th>'+
+      '<th style="'+b+bt+bl+'text-align:center;font-size:11.5px;'+p+'width:66px">จำนวน<br>Quantity</th>'+
+      '<th style="'+b+bt+bl+'text-align:center;font-size:11.5px;'+p+'width:90px">ราคาต่อหน่วย<br>Unit price</th>'+
+      '<th style="'+b+bt+bl+'text-align:center;font-size:11.5px;'+p+'width:90px">จำนวนเงิน<br>Amount</th>'+
+    '</tr>'+
+
+    // Item rows
+    rows+
+
+    // Totals rows
+    totRows+
+
+  '</table>'+
+
+  // Remarks
+  remHtml+
+
+  // Signature table
+  '<table style="'+tblStyle+'">'+
+    '<tr>'+
+      '<td style="'+b+p+'text-align:center;vertical-align:bottom">'+
+        '<div style="height:46px"></div>'+
+        '<div style="border-top:1px solid #000;margin:0 20px 5px"></div>'+
+        'ผู้รับเงิน / Collector<br>'+
+        '<span style="font-size:11px;color:#555">วันที่ / Date ................</span>'+
+      '</td>'+
+      '<td style="'+b+bl+p+'text-align:center;vertical-align:bottom">'+
+        '<div style="height:46px"></div>'+
+        '<div style="border-top:1px solid #000;margin:0 20px 5px"></div>'+
+        'ผู้ส่งของ / Delivered By<br>'+
+        '<span style="font-size:11px;color:#555">วันที่ / Date ................</span>'+
+      '</td>'+
+      '<td style="'+b+bl+p+'text-align:center;vertical-align:bottom">'+
+        '<div style="height:46px"></div>'+
+        '<div style="border-top:1px solid #000;margin:0 20px 5px"></div>'+
+        'ผู้รับของ / Receiver<br>'+
+        '<span style="font-size:11px;color:#555">วันที่ / Date ................</span>'+
+      '</td>'+
+    '</tr>'+
+  '</table>'+
+
+  '</div>';
 }
 
-// ── ITEMS ──
+
 function renderItems(){
   document.getElementById('items-wrap').innerHTML=items.map(function(it,i){
     return '<div class="ir">'+
@@ -851,6 +1081,7 @@ function setData(data){
   var ckr=document.getElementById('ck-r');if(ckr)ckr.checked=f.ckr!==false;
   var ckt=document.getElementById('ck-t');if(ckt)ckt.checked=f.ckt!==false;
   var ckd=document.getElementById('ck-d');if(ckd)ckd.checked=!!f.ckd;
+  var ckcopy=document.getElementById('ck-copy');if(ckcopy)ckcopy.checked=!!f.ckcopy;
   renderItems();renderConds();renderRemarks();render();
 }
 
@@ -879,8 +1110,14 @@ function loadScript(src,cb){var s=document.createElement('script');s.src=src;s.o
 
 function saveToDevice(){
   toast('⏳ กำลังสร้าง PDF เพื่อบันทึกลงเครื่อง…','');
+  // Make sure doc is visible before capture
+  var eb=document.getElementById('editor-body');
+  var prevClass=eb?eb.className:'';
+  if(eb)eb.className='editor-body show-prev';
   function go(){
-    html2canvas(document.getElementById('doc'),{scale:2,backgroundColor:'#fff',logging:false}).then(function(c){
+    setTimeout(function(){
+    html2canvas(document.getElementById('doc'),{scale:2,backgroundColor:'#fff',logging:false,useCORS:true}).then(function(c){
+      if(eb)eb.className=prevClass;
       var P=window.jspdf.jsPDF;
       var pdf=new P({orientation:'portrait',unit:'mm',format:'a4'});
       var pageW=210,pageH=297,margin=10,imgW=pageW-margin*2;
@@ -904,7 +1141,8 @@ function saveToDevice(){
       document.body.appendChild(a);a.click();
       setTimeout(function(){document.body.removeChild(a);URL.revokeObjectURL(url);},1000);
       toast('✅ PDF พร้อมแล้ว — กด "Save to Files" เพื่อบันทึกลงเครื่อง','ok');
-    }).catch(function(e){toast('❌ '+e.message,'err');});
+    }).catch(function(e){if(eb)eb.className=prevClass;toast('❌ '+e.message,'err');});
+    },100);
   }
   if(window.html2canvas&&window.jspdf){go();return;}
   loadScript('https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js',function(){
@@ -968,9 +1206,98 @@ function doPrint(){
   },300);
 }
 
+// ── COMPANY PROFILE ──
+function getCompany(){
+  try{return JSON.parse(localStorage.getItem('dm3_company')||'{}');}catch(e){return {};}
+}
+
+function openCompanySettings(){
+  var co=getCompany();
+  var map={cname:'co-cname',cen:'co-cen',caddr:'co-caddr',ctel:'co-ctel',
+           ctax:'co-ctax',creg:'co-creg',bank:'co-bank',bacname:'co-bacname',bacno:'co-bacno'};
+  Object.keys(map).forEach(function(k){
+    var el=document.getElementById(map[k]);
+    if(el&&co[k])el.value=co[k];
+  });
+  document.getElementById('co-modal').classList.add('on');
+}
+
+function closeCompanySettings(){
+  document.getElementById('co-modal').classList.remove('on');
+}
+
+function debugCompany(){
+  var raw = localStorage.getItem('dm3_company');
+  if(!raw){ alert('localStorage ว่าง - ยังไม่มีข้อมูลบริษัทถูกบันทึก'); return; }
+  try{
+    var co = JSON.parse(raw);
+    alert('ข้อมูลที่บันทึก:\nชื่อ: '+co.cname+'\nที่อยู่: '+co.caddr+'\nโทร: '+co.ctel);
+  }catch(e){ alert('Error: '+e.message); }
+}
+
+function saveCompanySettings(){
+  var co={
+    cname:document.getElementById('co-cname').value,
+    cen:document.getElementById('co-cen').value,
+    caddr:document.getElementById('co-caddr').value,
+    ctel:document.getElementById('co-ctel').value,
+    ctax:document.getElementById('co-ctax').value,
+    creg:document.getElementById('co-creg').value,
+    bank:document.getElementById('co-bank').value,
+    bacname:document.getElementById('co-bacname').value,
+    bacno:document.getElementById('co-bacno').value
+  };
+  try{
+    localStorage.setItem('dm3_company',JSON.stringify(co));
+    var verify = localStorage.getItem('dm3_company');
+    if(!verify){ toast('❌ บันทึกไม่ได้ - Safari อาจบล็อก localStorage','err'); return; }
+    closeCompanySettings();
+    toast('✅ บันทึกแล้ว: '+co.cname,'ok');
+  }catch(e){
+    alert('บันทึกไม่ได้: '+e.message+'\n\nลอง: Settings > Safari > Advanced > Website Data > ลบข้อมูล แล้วลองใหม่');
+  }
+}
+
+function fillCompanyToForm(){
+  var raw = localStorage.getItem('dm3_company');
+  if(!raw){ return; } // ไม่มีข้อมูล ไม่ต้องทำอะไร
+  var co;
+  try{ co=JSON.parse(raw); }catch(e){ return; }
+  // Fill ทุก field ที่มีข้อมูล ไม่ว่าจะว่างหรือไม่
+  var fields = [
+    ['f-cname',   co.cname   || ''],
+    ['f-cen',     co.cen     || ''],
+    ['f-caddr',   co.caddr   || ''],
+    ['f-ctel',    co.ctel    || ''],
+    ['f-ctax',    co.ctax    || ''],
+    ['f-creg',    co.creg    || ''],
+    ['f-bank',    co.bank    || ''],
+    ['f-bacname', co.bacname || ''],
+    ['f-bacno',   co.bacno   || '']
+  ];
+  var filled = false;
+  fields.forEach(function(pair){
+    var el = document.getElementById(pair[0]);
+    if(el){ el.value = pair[1]; if(pair[1]) filled = true; }
+  });
+  if(filled) toast('✅ เติมข้อมูลบริษัทแล้ว','ok');
+}
+
 // ── INIT ──
+function scaleDoc(){
+  var scaler=document.getElementById('doc-scaler');
+  var prev=document.getElementById('prev-panel');
+  if(!scaler||!prev)return;
+  var availW=prev.clientWidth - 32; // 16px padding each side
+  var docW=794;
+  var scale=Math.min(1, availW/docW);
+  scaler.style.transform='scale('+scale+')';
+  scaler.style.marginBottom=((1123*scale)-1123)+'px';
+}
+
 (function(){
   renderHome();
+  window.addEventListener('resize', scaleDoc);
 })();
 </script>
 </body>

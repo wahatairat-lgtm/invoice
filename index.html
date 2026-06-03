@@ -417,11 +417,8 @@ table.iv-tbl td.r{text-align:right;}
   .editor-actions .btn span{display:none;}
 }
 @media print{
-  @page{size:A4 portrait;margin:0;}
+  @page{size:A4 portrait;margin:10mm;}
   *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
-  html,body{width:210mm;height:297mm;margin:0;padding:0;background:#fff!important;}
-  body>*{display:none!important;}
-  #print-frame{display:block!important;}
 }
 </style>
 </head>
@@ -545,42 +542,18 @@ table.iv-tbl td.r{text-align:right;}
 
       <div id="iv-extra" style="display:none">
         <div class="sec">ต้นฉบับ</div>
-        <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:10px">
-          <div style="display:flex;align-items:center;gap:10px;background:var(--sur2);border-radius:8px;padding:10px 12px;">
-            <input type="checkbox" id="ck-or" onchange="render()" checked style="width:18px;height:18px;flex-shrink:0;accent-color:var(--acc);">
-            <span style="font-size:13px;color:var(--tx);">ต้นฉบับใบเสร็จรับเงิน</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:10px;background:var(--sur2);border-radius:8px;padding:10px 12px;">
-            <input type="checkbox" id="ck-ot" onchange="render()" checked style="width:18px;height:18px;flex-shrink:0;accent-color:var(--acc);">
-            <span style="font-size:13px;color:var(--tx);">ต้นฉบับใบกำกับภาษี</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:10px;background:var(--sur2);border-radius:8px;padding:10px 12px;">
-            <input type="checkbox" id="ck-od" onchange="render()" style="width:18px;height:18px;flex-shrink:0;accent-color:var(--acc);">
-            <span style="font-size:13px;color:var(--tx);">ต้นฉบับใบส่งของ</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:10px;background:var(--sur2);border-radius:8px;padding:10px 12px;">
-            <input type="checkbox" id="ck-on" onchange="render()" style="width:18px;height:18px;flex-shrink:0;accent-color:var(--acc);">
-            <span style="font-size:13px;color:var(--tx);">ต้นฉบับใบแจ้งหนี้</span>
-          </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:10px">
+          <div style="display:flex;align-items:center;gap:8px;background:var(--sur2);border-radius:8px;padding:9px 10px;"><input type="checkbox" id="ck-or" onchange="render()" checked style="width:18px;height:18px;flex-shrink:0;accent-color:var(--acc);"><span style="font-size:12.5px;color:var(--tx);">ต้นฉบับใบเสร็จรับเงิน</span></div>
+          <div style="display:flex;align-items:center;gap:8px;background:var(--sur2);border-radius:8px;padding:9px 10px;"><input type="checkbox" id="ck-ot" onchange="render()" checked style="width:18px;height:18px;flex-shrink:0;accent-color:var(--acc);"><span style="font-size:12.5px;color:var(--tx);">ต้นฉบับใบกำกับภาษี</span></div>
+          <div style="display:flex;align-items:center;gap:8px;background:var(--sur2);border-radius:8px;padding:9px 10px;"><input type="checkbox" id="ck-od" onchange="render()" style="width:18px;height:18px;flex-shrink:0;accent-color:var(--acc);"><span style="font-size:12.5px;color:var(--tx);">ต้นฉบับใบส่งของ</span></div>
+          <div style="display:flex;align-items:center;gap:8px;background:var(--sur2);border-radius:8px;padding:9px 10px;"><input type="checkbox" id="ck-on" onchange="render()" style="width:18px;height:18px;flex-shrink:0;accent-color:var(--acc);"><span style="font-size:12.5px;color:var(--tx);">ต้นฉบับใบแจ้งหนี้</span></div>
         </div>
         <div class="sec">สำเนา</div>
-        <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:8px">
-          <div style="display:flex;align-items:center;gap:10px;background:var(--sur2);border-radius:8px;padding:10px 12px;">
-            <input type="checkbox" id="ck-cr" onchange="render()" style="width:18px;height:18px;flex-shrink:0;accent-color:var(--acc);">
-            <span style="font-size:13px;color:var(--tx);">สำเนาใบเสร็จรับเงิน</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:10px;background:var(--sur2);border-radius:8px;padding:10px 12px;">
-            <input type="checkbox" id="ck-ct" onchange="render()" style="width:18px;height:18px;flex-shrink:0;accent-color:var(--acc);">
-            <span style="font-size:13px;color:var(--tx);">สำเนาใบกำกับภาษี</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:10px;background:var(--sur2);border-radius:8px;padding:10px 12px;">
-            <input type="checkbox" id="ck-cd" onchange="render()" style="width:18px;height:18px;flex-shrink:0;accent-color:var(--acc);">
-            <span style="font-size:13px;color:var(--tx);">สำเนาใบส่งของ</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:10px;background:var(--sur2);border-radius:8px;padding:10px 12px;">
-            <input type="checkbox" id="ck-cn" onchange="render()" style="width:18px;height:18px;flex-shrink:0;accent-color:var(--acc);">
-            <span style="font-size:13px;color:var(--tx);">สำเนาใบแจ้งหนี้</span>
-          </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:8px">
+          <div style="display:flex;align-items:center;gap:8px;background:var(--sur2);border-radius:8px;padding:9px 10px;"><input type="checkbox" id="ck-cr" onchange="render()" style="width:18px;height:18px;flex-shrink:0;accent-color:var(--acc);"><span style="font-size:12.5px;color:var(--tx);">สำเนาใบเสร็จรับเงิน</span></div>
+          <div style="display:flex;align-items:center;gap:8px;background:var(--sur2);border-radius:8px;padding:9px 10px;"><input type="checkbox" id="ck-ct" onchange="render()" style="width:18px;height:18px;flex-shrink:0;accent-color:var(--acc);"><span style="font-size:12.5px;color:var(--tx);">สำเนาใบกำกับภาษี</span></div>
+          <div style="display:flex;align-items:center;gap:8px;background:var(--sur2);border-radius:8px;padding:9px 10px;"><input type="checkbox" id="ck-cd" onchange="render()" style="width:18px;height:18px;flex-shrink:0;accent-color:var(--acc);"><span style="font-size:12.5px;color:var(--tx);">สำเนาใบส่งของ</span></div>
+          <div style="display:flex;align-items:center;gap:8px;background:var(--sur2);border-radius:8px;padding:9px 10px;"><input type="checkbox" id="ck-cn" onchange="render()" style="width:18px;height:18px;flex-shrink:0;accent-color:var(--acc);"><span style="font-size:12.5px;color:var(--tx);">สำเนาใบแจ้งหนี้</span></div>
         </div>
         <div class="sec">หมายเหตุท้ายเอกสาร</div>
         <div id="remark-list"></div>
@@ -775,7 +748,7 @@ function setFilter(f){
   renderHome();
 }
 
-function renderHome(){
+function renderHome(){try{
   var docs=getDocs();
   var q=0,iv=0,rc=0;
   docs.forEach(function(d){if(d.dtype==='quotation')q++;else if(d.dtype==='invoice')iv++;else rc++;});
@@ -800,13 +773,15 @@ function renderHome(){
   var labels={quotation:'ใบเสนอราคา',invoice:'ใบกำกับภาษี',receipt:'ใบเสร็จรับเงิน'};
   var typeClass={quotation:'q',invoice:'iv',receipt:'rc'};
   // Show badge on company button if no data
-  var coBtn=document.getElementById('co-nav-btn');
-  if(coBtn){
-    var hasCo=!!localStorage.getItem('dm3_company')&&!!getCompany().cname;
-    coBtn.style.borderColor=hasCo?'var(--bdr)':'#ef4444';
-    coBtn.style.color=hasCo?'var(--tx2)':'#ef4444';
-    coBtn.textContent=hasCo?'⚙️ ข้อมูลบริษัท':'⚙️ ข้อมูลบริษัท ⚠️';
-  }
+  try{
+    var coBtn=document.getElementById('co-nav-btn');
+    if(coBtn){
+      var hasCo=!!getCompany().cname;
+      coBtn.style.borderColor=hasCo?'var(--bdr)':'#ef4444';
+      coBtn.style.color=hasCo?'var(--tx2)':'#ef4444';
+      coBtn.textContent=hasCo?'⚙️ ข้อมูลบริษัท':'⚙️ ข้อมูลบริษัท ⚠️';
+    }
+  }catch(e){}
 
   grid.innerHTML=filtered.map(function(d){
     var dt=new Date(d.at);
@@ -828,7 +803,7 @@ function renderHome(){
       '</div>'+
     '</div>';
   }).join('');
-}
+}catch(e){console.log("renderHome error",e);}
 
 function showNewModal(){document.getElementById('new-modal').classList.add('on');}
 function closeNewModal(){document.getElementById('new-modal').classList.remove('on');}
@@ -843,6 +818,7 @@ function applyFieldValues(vals){
 }
 
 function createDoc(t){
+try{
   closeNewModal();
   currentDocId=null;
   dtype=t;
@@ -889,6 +865,7 @@ function createDoc(t){
     render();
     setTimeout(scaleDoc,50);
   },50);
+}catch(e){console.log('createDoc error:',e.message);toast('Error: '+e.message,'err');}
 }
 
 
@@ -965,10 +942,10 @@ function renderQ(t){
   items.forEach(function(it,i){
     if(!it.d&&!(+it.u))return;
     var tot=(+it.q||0)*(+it.u||0);
-    rows+='<div class="q-item"><span class="q-item-num">'+(i+1)+'.</span><span class="q-item-desc">'+esc(it.d)+'</span><span class="q-item-price">'+fmt(tot)+'.00 บาท</span></div>';
+    rows+='<div class="q-item"><span class="q-item-num">'+(i+1)+'.</span><span class="q-item-desc">'+esc(it.d)+'</span><span class="q-item-price">'+fmt(tot)+' บาท</span></div>';
   });
-  if(t.disc>0)rows+='<div class="q-item"><span class="q-item-num"></span><span class="q-item-desc">ส่วนลด</span><span class="q-item-price">- '+fmt(t.disc)+'.00 บาท</span></div>';
-  if(t.vr>0)rows+='<div class="q-item"><span class="q-item-num"></span><span class="q-item-desc">VAT '+t.vr+'%</span><span class="q-item-price">'+fmt(t.vat)+'.00 บาท</span></div>';
+  if(t.disc>0)rows+='<div class="q-item"><span class="q-item-num"></span><span class="q-item-desc">ส่วนลด</span><span class="q-item-price">- '+fmt(t.disc)+' บาท</span></div>';
+  if(t.vr>0)rows+='<div class="q-item"><span class="q-item-num"></span><span class="q-item-desc">VAT '+t.vr+'%</span><span class="q-item-price">'+fmt(t.vat)+' บาท</span></div>';
   var condHtml='';conds.forEach(function(c,i){if(c)condHtml+='<div class="q-cond-item">'+(i+1)+'. '+esc(c)+'</div>';});
   var bank=g('f-bank'),bacname=g('f-bacname'),bacno=g('f-bacno');
   var bankHtml=bacno?'<div class="q-cond-item">กรุณาโอนเงินเข้าบัญชี : '+esc(bank)+' ชื่อบัญชี : '+esc(bacname)+' เลขที่บัญชี : '+esc(bacno)+' เท่านั้น</div>':'';
@@ -977,14 +954,15 @@ function renderQ(t){
     '<div class="q-wrap">'+
     '<div class="q-co"><div class="q-co-name">'+esc(cname)+'</div>'+
     (g('f-cen')?'<div style="font-size:13px;color:#444;">'+esc(g('f-cen'))+'</div>':'')+
-    '<div class="q-co-addr">'+esc(g('f-caddr')).replace(/\n/g,' ')+(g('f-ctel')?'<br>M. '+esc(g('f-ctel')):'')+'</div></div>'+
+    '<div class="q-co-addr">'+esc(g('f-caddr')).replace(/\n/g,' ')+(g('f-creg')?'<br>ทะเบียนการค้าเลขที่ '+esc(g('f-creg')):'')+
+    (g('f-ctax')?'<br>เลขประจำตัวผู้เสียภาษี '+esc(g('f-ctax')):'')+(g('f-ctel')?'<br>โทร: '+esc(g('f-ctel')):'')+'</div></div>'+
     '<div class="q-divider"></div>'+
     (dateThai?'<div class="q-date">'+dateThai+'</div>':'')+
     '<div class="q-to">เรียน '+esc(bname||(baddr?baddr.split('\n')[0]:'ลูกค้า'))+(baddr?' ('+esc(baddr.replace(/\n/g,' '))+')'+'':'')+'</div>'+
     '<div class="q-sub">เรื่อง ใบเสนอราคา</div>'+
     '<div class="q-intro">ทางร้านฯ ขอเสนอราคา ดังมีรายการต่อไปนี้.-</div>'+
     rows+
-    '<div class="q-total-line"><span>รวมเป็นเงิน</span><span>'+fmt(t.grand)+'.00 บาท</span></div>'+
+    '<div class="q-total-line"><span>รวมเป็นเงิน</span><span>'+fmt(t.grand)+' บาท</span></div>'+
     '<div class="q-words">('+bahtText(t.grand)+')</div>'+
     '<div style="font-size:14px;margin-bottom:10px">จึงเรียนมาเพื่อทราบ</div>'+
     (condHtml||bankHtml?'<div class="q-conds"><div class="q-cond-title">เงื่อนไขการชำระเงิน</div>'+condHtml+bankHtml+'</div>':'')+
@@ -1185,7 +1163,9 @@ function renderIV(t){
 
 
 function renderItems(){
-  document.getElementById('items-wrap').innerHTML=items.map(function(it,i){
+  var iw=document.getElementById('items-wrap');
+  if(!iw)return;
+  iw.innerHTML=items.map(function(it,i){
     return '<div class="ir">'+
       '<span class="seq">'+(i+1)+'</span>'+
       '<input type="text" value="'+esc(it.d)+'" placeholder="รายการ" oninput="items['+i+'].d=this.value;render()">'+
@@ -1307,7 +1287,14 @@ function saveDoc(){
 }
 
 // ── EXPORT ──
-function loadScript(src,cb){var s=document.createElement('script');s.src=src;s.onload=cb;s.onerror=function(){toast('❌ โหลด library ไม่ได้ (ต้องต่อเน็ต)','err');};document.head.appendChild(s);}
+function loadScript(src,cb){
+  try{
+    var s=document.createElement('script');s.src=src;
+    s.onload=function(){try{cb();}catch(e){toast('❌ '+e.message,'err');}};
+    s.onerror=function(){toast('❌ โหลด library ไม่ได้ (ต้องต่ออินเตอร์เน็ต)','err');};
+    document.head.appendChild(s);
+  }catch(e){toast('❌ '+e.message,'err');}
+}
 
 function makePDF(cb){
   var eb=document.getElementById('editor-body');
@@ -1316,30 +1303,43 @@ function makePDF(cb){
   function go(){
     setTimeout(function(){
       var docEl=document.getElementById('doc');
-      // Temp fix width for capture
+      var scaler=document.getElementById('doc-scaler');
       var ow=docEl.style.width;
+      var st=scaler?scaler.style.transform:'';
+      var smb=scaler?scaler.style.marginBottom:'';
       docEl.style.width='794px';
-      html2canvas(docEl,{scale:2,backgroundColor:'#fff',logging:false,useCORS:true}).then(function(c){
-        docEl.style.width=ow;
-        if(eb)eb.className=prev;
-        var P=window.jspdf.jsPDF;
-        var pdf=new P({orientation:'portrait',unit:'mm',format:'a4'});
-        var imgW=190,margin=10;
-        var pxPerMm=c.width/imgW;
-        var pageImgH=(297-margin*2)*pxPerMm;
-        var y=0,page=0;
-        while(y<c.height){
-          if(page>0)pdf.addPage();
-          var slice=Math.min(pageImgH,c.height-y);
-          var c2=document.createElement('canvas');
-          c2.width=c.width;c2.height=slice;
-          c2.getContext('2d').drawImage(c,0,y,c.width,slice,0,0,c.width,slice);
-          pdf.addImage(c2.toDataURL('image/jpeg',0.95),'JPEG',margin,margin,imgW,slice/pxPerMm);
-          y+=pageImgH;page++;
-        }
-        cb(pdf);
-      }).catch(function(e){if(eb)eb.className=prev;toast('❌ '+e.message,'err');});
-    },150);
+      if(scaler){scaler.style.transform='none';scaler.style.marginBottom='0';}
+      function doCapture(){
+        html2canvas(docEl,{scale:2,backgroundColor:'#fff',logging:false,useCORS:true}).then(function(c){
+          docEl.style.width=ow;
+          if(scaler){scaler.style.transform=st;scaler.style.marginBottom=smb;}
+          if(eb)eb.className=prev;
+          var P=window.jspdf.jsPDF;
+          var pdf=new P({orientation:'portrait',unit:'mm',format:'a4'});
+          var imgW=190,margin=10;
+          var pxPerMm=c.width/imgW;
+          var pageImgH=(297-margin*2)*pxPerMm;
+          var y=0,page=0;
+          while(y<c.height){
+            if(page>0)pdf.addPage();
+            var slice=Math.min(pageImgH,c.height-y);
+            var c2=document.createElement('canvas');
+            c2.width=c.width;c2.height=slice;
+            c2.getContext('2d').drawImage(c,0,y,c.width,slice,0,0,c.width,slice);
+            pdf.addImage(c2.toDataURL('image/jpeg',0.95),'JPEG',margin,margin,imgW,slice/pxPerMm);
+            y+=pageImgH;page++;
+          }
+          cb(pdf);
+        }).catch(function(e){
+          docEl.style.width=ow;
+          if(scaler){scaler.style.transform=st;scaler.style.marginBottom=smb;}
+          if(eb)eb.className=prev;
+          toast('❌ '+e.message,'err');
+        });
+      }
+      if(document.fonts&&document.fonts.ready){document.fonts.ready.then(doCapture);}
+      else{setTimeout(doCapture,100);}
+    },200);
   }
   if(window.html2canvas&&window.jspdf){go();return;}
   loadScript('https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js',function(){
@@ -1347,38 +1347,6 @@ function makePDF(cb){
   });
 }
 
-function saveToDevice(){
-  toast('⏳ กำลังสร้าง PDF…','');
-  makePDF(function(pdf){
-    var name=getFilename()+'.pdf';
-    var blob=pdf.output('blob');
-    // iOS Safari: use Web Share API if available
-    if(navigator.share && navigator.canShare){
-      var file=new File([blob],name,{type:'application/pdf'});
-      if(navigator.canShare({files:[file]})){
-        navigator.share({files:[file],title:name})
-          .then(function(){toast('✅ แชร์/บันทึกสำเร็จ','ok');})
-          .catch(function(){});
-        return;
-      }
-    }
-    // Fallback: download link
-    var url=URL.createObjectURL(blob);
-    var a=document.createElement('a');
-    a.href=url;a.download=name;a.style.display='none';
-    document.body.appendChild(a);a.click();
-    setTimeout(function(){document.body.removeChild(a);URL.revokeObjectURL(url);},2000);
-    toast('✅ กำลังบันทึก PDF…','ok');
-  });
-}
-
-function exportPDF(){
-  toast('⏳ กำลังสร้าง PDF…','');
-  makePDF(function(pdf){
-    pdf.save(getFilename()+'.pdf');
-    toast('✅ บันทึก PDF แล้ว','ok');
-  });
-}
 
 function sharePDF(){
   toast('⏳ กำลังเตรียม PDF เพื่อแชร์…','');
@@ -1419,30 +1387,35 @@ function exportJPG(){
 }
 
 function doPrint(){
-  var docEl = document.getElementById('doc');
-  var frame = document.getElementById('print-frame');
-  // Clone doc content into print frame
-  frame.innerHTML = docEl.outerHTML;
-  frame.style.display = 'block';
-  // Fix clone id to avoid conflict
-  var clone = frame.querySelector('#doc');
-  if(clone){
-    clone.style.width='190mm';
-    clone.style.fontSize='11px';
-    clone.style.boxShadow='none';
-    clone.style.margin='10mm';
-    clone.style.padding='0';
-    clone.style.minHeight='auto';
-  }
-  setTimeout(function(){
-    window.print();
-    setTimeout(function(){ frame.style.display='none'; frame.innerHTML=''; },500);
-  },200);
+  // Build a printable HTML page and open in new window
+  var docEl=document.getElementById('doc');
+  var content=docEl.innerHTML;
+  var printWin=window.open('','_blank','width=800,height=900');
+  printWin.document.write(
+    '<!DOCTYPE html><html><head><meta charset="UTF-8">'+
+    '<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">'+
+    '<style>'+
+    '@page{size:A4 portrait;margin:10mm;}'+
+    '*{-webkit-print-color-adjust:exact;print-color-adjust:exact;box-sizing:border-box;margin:0;padding:0;}'+
+    'body{font-family:Sarabun,Arial,sans-serif;font-size:12px;background:#fff;color:#000;}'+
+    '.iv-wrap,.q-wrap{padding:12mm 14mm;}'+
+    'table{border-collapse:collapse;width:100%;}'+
+    'td,th{border:1px solid #000;padding:5px 7px;font-size:11px;}'+
+    '</style></head><body>'+
+    content+
+    '<scr'+'ipt>window.onload=function(){window.print();window.onafterprint=function(){window.close();};};<'+'/scr'+'ipt>'+
+    '</body></html>'
+  );
+  printWin.document.close();
 }
 
 // ── COMPANY PROFILE ──
 function getCompany(){
-  try{return JSON.parse(localStorage.getItem('dm3_company')||'{}');}catch(e){return {};}
+  try{
+    var raw=localStorage.getItem('dm3_company');
+    if(raw){var co=JSON.parse(raw);if(co&&co.cname)return co;}
+  }catch(e){}
+  return _coData; // fallback to hardcoded defaults
 }
 
 function openCompanySettings(){
@@ -1461,9 +1434,9 @@ function closeCompanySettings(){
 }
 
 function debugCompany(){
-  var raw = localStorage.getItem('dm3_company');
-  if(!raw){ alert('localStorage ว่าง - ยังไม่มีข้อมูลบริษัทถูกบันทึก'); return; }
   try{
+    var raw = localStorage.getItem('dm3_company');
+    if(!raw){ alert('localStorage ว่าง - ยังไม่มีข้อมูลบริษัทถูกบันทึก'); return; }
     var co = JSON.parse(raw);
     alert('ข้อมูลที่บันทึก:\nชื่อ: '+co.cname+'\nที่อยู่: '+co.caddr+'\nโทร: '+co.ctel);
   }catch(e){ alert('Error: '+e.message); }
@@ -1531,8 +1504,10 @@ function scaleDoc(){
 }
 
 (function(){
-  renderHome();
-  window.addEventListener('resize', scaleDoc);
+  try{
+    renderHome();
+    window.addEventListener('resize', scaleDoc);
+  }catch(e){ console.log('Init error:',e); }
 })();
 </script>
 <div id="print-frame" style="display:none;position:fixed;top:0;left:0;width:210mm;background:#fff;"></div>

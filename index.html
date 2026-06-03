@@ -7,161 +7,193 @@
 <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;600;700&family=Prompt:wght@600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#f0f2f5;--sur:#ffffff;--sur2:#f5f7fa;--bdr:#dde1ea;
-  --acc:#2563eb;--acc2:#059669;--tx:#1a1d2e;--tx2:#64748b;
-  --q:#6c63ff;--iv:#d97706;--rc:#059669;
+  --bg:#f4f6fb;
+  --sur:#ffffff;
+  --sur2:#f0f3f9;
+  --bdr:#e2e8f4;
+  --acc:#2563eb;
+  --acc2:#059669;
+  --tx:#0f172a;
+  --tx2:#64748b;
+  --q:#7c3aed;
+  --iv:#d97706;
+  --rc:#059669;
+  --shadow:0 2px 12px rgba(37,99,235,.07);
+  --shadow-md:0 4px 24px rgba(37,99,235,.11);
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
 body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--tx);min-height:100vh;overflow-x:hidden;}
 
-/* ══════════════════════════════
-   SCREEN SYSTEM
-══════════════════════════════ */
+/* ── SCREEN SYSTEM ── */
 .screen{display:none;min-height:100vh;}
 .screen.active{display:flex;flex-direction:column;}
 
-/* ══════════════════════════════
-   HOME SCREEN
-══════════════════════════════ */
+/* ── HOME NAV ── */
 .home-nav{
   background:var(--sur);
   border-bottom:1px solid var(--bdr);
   padding:14px 18px;
-  display:flex;align-items:center;justify-content:space-between;
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
   position:sticky;top:0;z-index:10;
+  box-shadow:var(--shadow);
 }
-.logo{font-family:'Prompt',sans-serif;font-size:18px;font-weight:700;
-  background:linear-gradient(135deg,var(--acc),var(--acc2));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.logo{
+  font-family:'Prompt',sans-serif;font-size:17px;font-weight:700;
+  background:linear-gradient(135deg,var(--acc),#7c3aed);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  letter-spacing:-.3px;
+}
 .new-doc-btn{
   display:flex;align-items:center;gap:6px;
-  background:linear-gradient(135deg,var(--acc),#6c63ff);
-  color:#fff;border:none;border-radius:10px;
-  padding:10px 18px;font-family:'Sarabun',sans-serif;
+  background:linear-gradient(135deg,var(--acc),#7c3aed);
+  color:#fff;border:none;border-radius:12px;
+  padding:11px 20px;font-family:'Sarabun',sans-serif;
   font-size:14px;font-weight:700;cursor:pointer;
+  box-shadow:0 3px 12px rgba(37,99,235,.3);
+  transition:opacity .15s,transform .1s;
 }
-.new-doc-btn:active{opacity:.8;}
+.new-doc-btn:active{opacity:.85;transform:scale(.97);}
 
-.home-body{flex:1;padding:18px;overflow-y:auto;}
+.home-body{flex:1;padding:18px;overflow-y:auto;max-width:680px;margin:0 auto;width:100%;}
 
+/* ── STATS ── */
 .home-stats{
   display:grid;grid-template-columns:repeat(3,1fr);
   gap:10px;margin-bottom:20px;
 }
 .stat-card{
   background:var(--sur);border:1px solid var(--bdr);
-  border-radius:12px;padding:14px 12px;text-align:center;
-  box-shadow:0 1px 4px rgba(0,0,0,.06);
+  border-radius:16px;padding:16px 10px;text-align:center;
+  box-shadow:var(--shadow);
+  transition:transform .15s;
 }
-.stat-num{font-family:'Prompt',sans-serif;font-size:22px;font-weight:700;margin-bottom:2px;}
+.stat-card:active{transform:scale(.97);}
+.stat-num{font-family:'Prompt',sans-serif;font-size:26px;font-weight:700;margin-bottom:2px;line-height:1;}
 .stat-num.q{color:var(--q);}
 .stat-num.iv{color:var(--iv);}
 .stat-num.rc{color:var(--rc);}
-.stat-label{font-size:11px;color:var(--tx2);}
+.stat-label{font-size:11px;color:var(--tx2);margin-top:4px;font-weight:500;}
 
-.section-header{
-  display:flex;align-items:center;justify-content:space-between;
-  margin-bottom:12px;
-}
-.section-title{font-family:'Prompt',sans-serif;font-size:13px;font-weight:700;color:var(--tx2);text-transform:uppercase;letter-spacing:.8px;}
-
+/* ── SEARCH ── */
 .search-bar{
-  background:var(--sur);border:1px solid var(--bdr);
-  border-radius:10px;padding:10px 14px;
-  display:flex;align-items:center;gap:8px;
-  margin-bottom:14px;
-  box-shadow:0 1px 3px rgba(0,0,0,.05);
+  background:var(--sur);border:1.5px solid var(--bdr);
+  border-radius:14px;padding:11px 16px;
+  display:flex;align-items:center;gap:10px;
+  margin-bottom:12px;
+  box-shadow:var(--shadow);
+  transition:border-color .2s;
 }
+.search-bar:focus-within{border-color:var(--acc);}
 .search-bar input{
   background:none;border:none;color:var(--tx);
-  font-family:'Sarabun',sans-serif;font-size:13px;
+  font-family:'Sarabun',sans-serif;font-size:14px;
   outline:none;flex:1;
 }
 .search-bar input::placeholder{color:var(--tx2);}
 
-.filter-row{display:flex;gap:6px;margin-bottom:16px;overflow-x:auto;padding-bottom:2px;}
+/* ── FILTER ── */
+.filter-row{display:flex;gap:6px;margin-bottom:16px;overflow-x:auto;padding-bottom:4px;}
+.filter-row::-webkit-scrollbar{display:none;}
 .filter-btn{
-  padding:7px 14px;border-radius:20px;border:1px solid var(--bdr);
-  background:transparent;color:var(--tx2);
-  font-family:'Sarabun',sans-serif;font-size:12px;font-weight:600;
+  padding:8px 16px;border-radius:20px;
+  border:1.5px solid var(--bdr);
+  background:var(--sur);color:var(--tx2);
+  font-family:'Sarabun',sans-serif;font-size:12.5px;font-weight:600;
   cursor:pointer;white-space:nowrap;
+  transition:all .15s;box-shadow:var(--shadow);
 }
-.filter-btn.on{background:var(--acc);border-color:var(--acc);color:#fff;}
+.filter-btn.on{
+  background:linear-gradient(135deg,var(--acc),#7c3aed);
+  border-color:transparent;color:#fff;
+  box-shadow:0 3px 10px rgba(37,99,235,.25);
+}
 
+/* ── DOC CARDS ── */
 .doc-grid{display:flex;flex-direction:column;gap:10px;}
 
 .doc-card{
-  background:var(--sur);border:1px solid var(--bdr);
-  border-radius:14px;padding:16px;
+  background:var(--sur);border:1.5px solid var(--bdr);
+  border-radius:16px;padding:16px;
   display:flex;align-items:center;gap:14px;
-  cursor:pointer;transition:border-color .15s;
-  position:relative;
+  cursor:pointer;
+  box-shadow:var(--shadow);
+  transition:all .15s;
 }
-.doc-card:active{border-color:var(--acc);}
+.doc-card:active{transform:scale(.98);border-color:var(--acc);}
 .doc-card-icon{
-  width:46px;height:46px;border-radius:12px;
+  width:48px;height:48px;border-radius:14px;
   display:flex;align-items:center;justify-content:center;
   font-size:22px;flex-shrink:0;
 }
-.doc-card-icon.q{background:rgba(108,99,255,.15);}
-.doc-card-icon.iv{background:rgba(245,158,11,.15);}
-.doc-card-icon.rc{background:rgba(16,185,129,.15);}
+.doc-card-icon.q{background:linear-gradient(135deg,#ede9fe,#ddd6fe);}
+.doc-card-icon.iv{background:linear-gradient(135deg,#fef3c7,#fde68a);}
+.doc-card-icon.rc{background:linear-gradient(135deg,#d1fae5,#a7f3d0);}
 .doc-card-body{flex:1;min-width:0;}
 .doc-card-name{font-size:14px;font-weight:700;margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.doc-card-meta{font-size:12px;color:var(--tx2);display:flex;gap:10px;flex-wrap:wrap;}
-.doc-card-amount{font-size:15px;font-weight:700;color:var(--acc2);text-align:right;flex-shrink:0;}
+.doc-card-meta{font-size:12px;color:var(--tx2);display:flex;gap:8px;flex-wrap:wrap;margin-bottom:2px;}
+.doc-card-badge{
+  display:inline-flex;align-items:center;
+  padding:2px 8px;border-radius:20px;
+  font-size:11px;font-weight:600;
+}
+.badge-q{background:#ede9fe;color:#7c3aed;}
+.badge-iv{background:#fef3c7;color:#d97706;}
+.badge-rc{background:#d1fae5;color:#059669;}
+.doc-card-amount{font-size:15px;font-weight:700;color:var(--acc);text-align:right;flex-shrink:0;}
 .doc-card-date{font-size:11px;color:var(--tx2);margin-top:2px;}
-
-.doc-card-actions{
-  position:absolute;top:10px;right:10px;
-  display:flex;gap:4px;
-}
-.card-act-btn{
-  width:30px;height:30px;border-radius:8px;border:none;
+.card-act-del{
+  width:32px;height:32px;border-radius:10px;border:none;
   display:flex;align-items:center;justify-content:center;
-  font-size:14px;cursor:pointer;
+  font-size:15px;cursor:pointer;flex-shrink:0;
+  background:rgba(239,68,68,.1);color:#ef4444;
+  transition:all .15s;
 }
-.card-act-del{background:rgba(239,68,68,.12);color:#ef4444;}
 .card-act-del:active{background:#ef4444;color:#fff;}
 
-.empty-home{
-  text-align:center;padding:60px 20px;color:var(--tx2);
-}
-.empty-home-icon{font-size:56px;margin-bottom:16px;}
+.empty-home{text-align:center;padding:60px 20px;color:var(--tx2);}
+.empty-home-icon{font-size:60px;margin-bottom:16px;}
 .empty-home-title{font-size:16px;font-weight:700;margin-bottom:8px;color:var(--tx);}
-.empty-home-sub{font-size:13px;line-height:1.6;}
+.empty-home-sub{font-size:13px;line-height:1.7;}
 
-/* New doc modal */
+/* ── MODALS ── */
 .modal-overlay{
   display:none;position:fixed;inset:0;
-  background:rgba(0,0,0,.7);z-index:100;
-  align-items:flex-end;justify-content:center;
+  background:rgba(15,23,42,.6);backdrop-filter:blur(4px);
+  z-index:100;align-items:flex-end;justify-content:center;
 }
 .modal-overlay.on{display:flex;}
 .modal-sheet{
-  background:var(--sur);border-radius:20px 20px 0 0;
-  padding:20px;width:100%;max-width:500px;
-  box-shadow:0 -4px 30px rgba(0,0,0,.15);
+  background:var(--sur);border-radius:24px 24px 0 0;
+  padding:8px 20px 32px;width:100%;max-width:520px;
+  box-shadow:0 -8px 40px rgba(0,0,0,.12);
 }
-.modal-title{font-family:'Prompt',sans-serif;font-size:16px;font-weight:700;margin-bottom:16px;text-align:center;}
+.modal-handle{
+  width:36px;height:4px;background:var(--bdr);
+  border-radius:2px;margin:12px auto 20px;
+}
+.modal-title{
+  font-family:'Prompt',sans-serif;font-size:16px;font-weight:700;
+  margin-bottom:16px;text-align:center;color:var(--tx);
+}
 .modal-options{display:flex;flex-direction:column;gap:10px;}
 .modal-opt{
   display:flex;align-items:center;gap:14px;
-  padding:16px;border-radius:14px;border:none;
+  padding:16px;border-radius:16px;border:none;
   cursor:pointer;text-align:left;width:100%;
+  transition:transform .1s,opacity .1s;
 }
-.modal-opt:active{opacity:.8;}
-.modal-opt-icon{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;}
-.modal-opt-label{font-family:'Sarabun',sans-serif;font-size:15px;font-weight:700;}
-.modal-opt-sub{font-size:12px;opacity:.7;margin-top:2px;}
+.modal-opt:active{transform:scale(.98);opacity:.9;}
+.modal-opt-icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;}
+.modal-opt-label{font-family:'Sarabun',sans-serif;font-size:15px;font-weight:700;color:var(--tx);}
+.modal-opt-sub{font-size:12px;color:var(--tx2);margin-top:2px;}
 .modal-cancel{
-  margin-top:12px;width:100%;padding:14px;border-radius:12px;
+  margin-top:10px;width:100%;padding:15px;border-radius:14px;
   border:none;background:var(--sur2);color:var(--tx2);
   font-family:'Sarabun',sans-serif;font-size:14px;font-weight:700;cursor:pointer;
 }
-.opt-q{background:rgba(108,99,255,.2);}
-.opt-iv{background:rgba(245,158,11,.2);}
-.opt-rc{background:rgba(16,185,129,.2);}
+.opt-q{background:linear-gradient(135deg,#ede9fe,#ddd6fe);}
+.opt-iv{background:linear-gradient(135deg,#fef3c7,#fde68a);}
+.opt-rc{background:linear-gradient(135deg,#d1fae5,#a7f3d0);}
 
 /* ══════════════════════════════
    EDITOR SCREEN
@@ -193,33 +225,75 @@ body{font-family:'Sarabun',sans-serif;background:var(--bg);color:var(--tx);min-h
 
 .editor-body{display:flex;flex:1;overflow:hidden;}
 
-/* FORM */
-.form-panel{width:380px;min-width:340px;background:var(--sur);border-right:1px solid var(--bdr);overflow-y:auto;padding:14px 13px 40px;}
-.sec{font-family:'Prompt',sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--acc);margin:15px 0 7px;display:flex;align-items:center;gap:8px;}
+/* ── FORM PANEL ── */
+.form-panel{
+  width:380px;min-width:340px;
+  background:var(--sur);border-right:1px solid var(--bdr);
+  overflow-y:auto;padding:16px 14px 40px;
+}
+.form-panel::-webkit-scrollbar{width:4px;}
+.form-panel::-webkit-scrollbar-thumb{background:var(--bdr);border-radius:2px;}
+
+.sec{
+  font-family:'Prompt',sans-serif;font-size:10px;font-weight:700;
+  text-transform:uppercase;letter-spacing:1.2px;color:var(--acc);
+  margin:18px 0 8px;display:flex;align-items:center;gap:8px;
+}
 .sec::after{content:'';flex:1;height:1px;background:var(--bdr);}
-.row{display:flex;gap:7px;margin-bottom:6px;}
-.fg{display:flex;flex-direction:column;gap:3px;flex:1;}
-label{font-size:11px;color:var(--tx2);font-weight:600;}
-input,textarea,select{background:var(--sur2);border:1px solid var(--bdr);border-radius:7px;color:var(--tx);padding:9px 10px;font-family:'Sarabun',sans-serif;font-size:13px;outline:none;transition:border-color .2s;width:100%;}
-input:focus,textarea:focus,select:focus{border-color:var(--acc);}
-textarea{resize:vertical;min-height:50px;}
+.row{display:flex;gap:8px;margin-bottom:8px;}
+.fg{display:flex;flex-direction:column;gap:4px;flex:1;}
+label{font-size:11.5px;color:var(--tx2);font-weight:600;letter-spacing:.2px;}
+input,textarea,select{
+  background:var(--sur2);
+  border:1.5px solid var(--bdr);
+  border-radius:10px;color:var(--tx);
+  padding:10px 12px;
+  font-family:'Sarabun',sans-serif;font-size:13px;
+  outline:none;transition:border-color .2s,box-shadow .2s;width:100%;
+}
+input:focus,textarea:focus,select:focus{
+  border-color:var(--acc);
+  box-shadow:0 0 0 3px rgba(37,99,235,.1);
+}
+textarea{resize:vertical;min-height:52px;}
 select option{background:#ffffff;}
-.ih{display:grid;grid-template-columns:22px 1fr 50px 76px 26px;gap:4px;margin-bottom:4px;}
-.ih span{font-size:10px;color:var(--tx2);font-weight:700;text-transform:uppercase;}
-.ir{display:grid;grid-template-columns:22px 1fr 50px 76px 26px;gap:4px;margin-bottom:5px;align-items:center;}
-.ir input{padding:7px 7px;font-size:12px;}
-.ir .seq{font-size:12px;color:var(--tx2);text-align:center;}
-.xbtn{background:none;border:1px solid #ef4444;color:#ef4444;border-radius:6px;width:26px;height:33px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;}
-.xbtn:active{background:#ef4444;color:#fff;}
-.add-btn{width:100%;padding:9px;background:transparent;border:1px dashed var(--bdr);border-radius:8px;color:var(--tx2);font-family:'Sarabun',sans-serif;font-size:13px;cursor:pointer;margin-top:3px;}
-.add-btn:active{border-color:var(--acc);color:var(--acc);}
-.tot-box{background:var(--sur2);border-radius:10px;padding:12px;margin-top:10px;display:flex;flex-direction:column;gap:6px;}
+
+.ih{display:grid;grid-template-columns:22px 1fr 50px 78px 28px;gap:4px;margin-bottom:5px;}
+.ih span{font-size:10px;color:var(--tx2);font-weight:700;text-transform:uppercase;letter-spacing:.5px;}
+.ir{display:grid;grid-template-columns:22px 1fr 50px 78px 28px;gap:4px;margin-bottom:6px;align-items:center;}
+.ir input{padding:8px 7px;font-size:12px;border-radius:8px;}
+.ir .seq{font-size:12px;color:var(--tx2);text-align:center;font-weight:600;}
+.xbtn{
+  background:none;border:1.5px solid #fca5a5;color:#ef4444;
+  border-radius:8px;width:28px;height:36px;cursor:pointer;
+  font-size:16px;display:flex;align-items:center;justify-content:center;
+  transition:all .15s;
+}
+.xbtn:active{background:#ef4444;color:#fff;border-color:#ef4444;}
+.add-btn{
+  width:100%;padding:10px;background:transparent;
+  border:1.5px dashed var(--bdr);border-radius:10px;
+  color:var(--tx2);font-family:'Sarabun',sans-serif;font-size:13px;
+  cursor:pointer;margin-top:4px;transition:all .2s;
+}
+.add-btn:active{border-color:var(--acc);color:var(--acc);background:rgba(37,99,235,.04);}
+.tot-box{
+  background:var(--sur2);border:1px solid var(--bdr);
+  border-radius:14px;padding:14px;margin-top:12px;
+  display:flex;flex-direction:column;gap:8px;
+}
 .tr{display:flex;justify-content:space-between;align-items:center;font-size:13px;}
 .tr label{color:var(--tx2);}
-.tr.grand{border-top:1px solid var(--bdr);padding-top:8px;font-size:15px;font-weight:700;color:var(--acc2);}
-.cond-row{display:flex;gap:5px;align-items:center;margin-bottom:5px;}
-.cond-row input{font-size:12px;padding:7px 8px;}
-.cond-del{background:none;border:1px solid #ef4444;color:#ef4444;border-radius:5px;padding:4px 8px;font-size:13px;cursor:pointer;flex-shrink:0;}
+.tr.grand{
+  border-top:1.5px solid var(--bdr);padding-top:10px;
+  font-size:15px;font-weight:700;color:var(--acc);
+}
+.cond-row{display:flex;gap:6px;align-items:center;margin-bottom:6px;}
+.cond-row input{font-size:12px;padding:8px 10px;border-radius:8px;}
+.cond-del{
+  background:none;border:1.5px solid #fca5a5;color:#ef4444;
+  border-radius:7px;padding:5px 9px;font-size:13px;cursor:pointer;flex-shrink:0;
+}
 
 /* PREVIEW */
 .prev-panel{flex:1;background:#e2e6ed;overflow:auto;display:flex;justify-content:flex-start;flex-direction:column;align-items:center;padding:24px 12px;}
@@ -345,12 +419,9 @@ table.iv-tbl td.r{text-align:right;}
 @media print{
   @page{size:A4 portrait;margin:0;}
   *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
-  body>*:not(#screen-editor){display:none!important;}
-  #screen-editor{display:flex!important;flex-direction:column;}
-  .editor-nav,.view-toggle,.form-panel{display:none!important;}
-  .editor-body{display:block!important;}
-  .prev-panel{display:block!important;padding:0!important;background:#fff!important;overflow:visible!important;}
-  #doc{display:block!important;width:210mm!important;min-height:297mm!important;box-shadow:none!important;margin:0!important;padding:12mm 14mm!important;}
+  html,body{width:210mm;height:297mm;margin:0;padding:0;background:#fff!important;}
+  body>*{display:none!important;}
+  #print-frame{display:block!important;}
 }
 </style>
 </head>
@@ -375,7 +446,7 @@ table.iv-tbl td.r{text-align:right;}
       <button class="filter-btn on" data-f="all" onclick="setFilter('all')">ทั้งหมด</button>
       <button class="filter-btn" data-f="quotation" onclick="setFilter('quotation')">ใบเสนอราคา</button>
       <button class="filter-btn" data-f="invoice" onclick="setFilter('invoice')">ใบกำกับภาษี</button>
-      <button class="filter-btn" data-f="receipt" onclick="setFilter('receipt')">ใบเสร็จรับเงิน</button>
+
     </div>
     <div class="doc-grid" id="doc-grid"></div>
   </div>
@@ -384,6 +455,7 @@ table.iv-tbl td.r{text-align:right;}
 <!-- NEW DOC MODAL -->
 <div class="modal-overlay" id="new-modal" onclick="closeNewModal()">
   <div class="modal-sheet" onclick="event.stopPropagation()">
+    <div class="modal-handle"></div>
     <div class="modal-title">เลือกประเภทเอกสาร</div>
     <div class="modal-options">
       <button class="modal-opt" onclick="createDoc('quotation')">
@@ -394,10 +466,7 @@ table.iv-tbl td.r{text-align:right;}
         <div class="modal-opt-icon opt-iv">🧾</div>
         <div><div class="modal-opt-label">ใบกำกับภาษี</div><div class="modal-opt-sub">Tax Invoice · แบบตาราง</div></div>
       </button>
-      <button class="modal-opt" onclick="createDoc('receipt')">
-        <div class="modal-opt-icon opt-rc">✅</div>
-        <div><div class="modal-opt-label">ใบเสร็จรับเงิน</div><div class="modal-opt-sub">Receipt · แบบตาราง</div></div>
-      </button>
+
     </div>
     <button class="modal-cancel" onclick="closeNewModal()">ยกเลิก</button>
   </div>
@@ -411,9 +480,10 @@ table.iv-tbl td.r{text-align:right;}
     <button class="back-btn" onclick="goHome()">← คลัง</button>
     <span class="editor-title" id="editor-title">เอกสาร</span>
     <div class="editor-actions">
-      <button class="btn b-save" onclick="saveDoc()">💾 <span>เซฟในแอพ</span></button>
-      <button class="btn b-pdf"  onclick="saveToDevice()">📥 <span>บันทึกลงเครื่อง</span></button>
-      <button class="btn b-print" onclick="doPrint()">🖨 <span>ปริ้น BT</span></button>
+      <button class="btn b-save" onclick="saveDoc()">💾 <span>เซฟ</span></button>
+      <button class="btn b-pdf"  onclick="saveToDevice()">📥 <span>บันทึก</span></button>
+      <button class="btn b-share" onclick="sharePDF()">↗️ <span>แชร์</span></button>
+      <button class="btn b-print" onclick="doPrint()">🖨 <span>ปริ้น</span></button>
     </div>
   </div>
 
@@ -426,16 +496,21 @@ table.iv-tbl td.r{text-align:right;}
     <!-- FORM PANEL -->
     <div class="form-panel" id="form-panel">
       <div class="sec">ข้อมูลบริษัท / ร้านค้า</div>
-      <div class="fg" style="margin-bottom:6px"><label>ชื่อบริษัท / ร้านค้า</label><input id="f-cname" type="text" oninput="render()"></div>
-      <div class="fg" style="margin-bottom:6px"><label>ชื่อภาษาอังกฤษ</label><input id="f-cen" type="text" oninput="render()"></div>
-      <div class="fg" style="margin-bottom:6px"><label>ที่อยู่</label><textarea id="f-caddr" oninput="render()"></textarea></div>
+      <div class="fg" style="margin-bottom:6px"><label>ชื่อบริษัท / ร้านค้า</label><input id="f-cname" type="text" value="ส.ไทยเจริญ (สำนักงานใหญ่)" oninput="saveCoField('f-cname',this.value);render()"></div>
+      <div class="fg" style="margin-bottom:6px"><label>ชื่อภาษาอังกฤษ</label><input id="f-cen" type="text" value="S. Thai Chareon (Head Office)" oninput="saveCoField('f-cen',this.value);render()"></div>
+      <div class="fg" style="margin-bottom:6px"><label>ที่อยู่</label><textarea id="f-caddr" oninput="saveCoField('f-caddr',this.value);render()">147/9 หมู่บ้านเธียรเกษม หมู่1 ถ.เทพารักษ์ ต.เทพารักษ์ อ.เมือง จ.สมุทรปราการ 10270</textarea></div>
       <div class="row">
-        <div class="fg"><label>โทรศัพท์</label><input id="f-ctel" type="tel" oninput="render()"></div>
-        <div class="fg"><label>เลขผู้เสียภาษี</label><input id="f-ctax" type="text" oninput="render()"></div>
+        <div class="fg"><label>โทรศัพท์</label><input id="f-ctel" type="tel" value="086-332-3929" oninput="saveCoField('f-ctel',this.value);render()"></div>
+        <div class="fg"><label>เลขผู้เสียภาษี</label><input id="f-ctax" type="text" value="3 1009 01737 53 8 (เดิม 1 01732572 8)" oninput="saveCoField('f-ctax',this.value);render()"></div>
       </div>
-      <div class="fg" style="margin-bottom:6px"><label>ทะเบียนการค้า</label><input id="f-creg" type="text" oninput="render()"></div>
+      <div class="fg" style="margin-bottom:6px"><label>ทะเบียนการค้า</label><input id="f-creg" type="text" value="อ. 8588" oninput="saveCoField('f-creg',this.value);render()"></div>
 
       <div class="sec">รายละเอียดเอกสาร</div>
+      <div class="fg" style="margin-bottom:8px">
+        <label>ชื่อไฟล์ที่บันทึก</label>
+        <input id="f-filename" type="text" placeholder="ชื่อลูกค้า หรือ ชื่อที่ต้องการ" oninput="updateFilenamePreview()">
+        <span id="filename-preview" style="font-size:11px;color:var(--tx2);margin-top:3px;display:block"></span>
+      </div>
       <div class="row">
         <div class="fg"><label>เลขที่เอกสาร</label><input id="f-docno" type="text" oninput="render()"></div>
         <div class="fg"><label>เล่มที่</label><input id="f-docbook" type="text" oninput="render()"></div>
@@ -452,7 +527,7 @@ table.iv-tbl td.r{text-align:right;}
       </div>
 
       <div class="sec">ข้อมูลลูกค้า</div>
-      <div class="fg" style="margin-bottom:6px"><label>ชื่อลูกค้า</label><input id="f-bname" type="text" oninput="render()"></div>
+      <div class="fg" style="margin-bottom:6px"><label>ชื่อลูกค้า</label><input id="f-bname" type="text" oninput="render();updateFilenamePreview()"></div>
       <div class="fg" style="margin-bottom:6px"><label>ที่อยู่</label><textarea id="f-baddr" oninput="render()"></textarea></div>
       <div class="fg" style="margin-bottom:6px"><label>เลขผู้เสียภาษี / บัตรประชาชน</label><input id="f-btax" type="text" oninput="render()"></div>
 
@@ -462,30 +537,49 @@ table.iv-tbl td.r{text-align:right;}
         <button class="add-btn" onclick="addCond()">+ เพิ่มเงื่อนไข</button>
         <div class="sec">บัญชีธนาคาร</div>
         <div class="row">
-          <div class="fg"><label>ธนาคาร</label><input id="f-bank" type="text" oninput="render()"></div>
-          <div class="fg"><label>ชื่อบัญชี</label><input id="f-bacname" type="text" oninput="render()"></div>
+          <div class="fg"><label>ธนาคาร</label><input id="f-bank" type="text" oninput="saveCoField('f-bank',this.value);render()"></div>
+          <div class="fg"><label>ชื่อบัญชี</label><input id="f-bacname" type="text" oninput="saveCoField('f-bacname',this.value);render()"></div>
         </div>
-        <div class="fg" style="margin-bottom:6px"><label>เลขที่บัญชี</label><input id="f-bacno" type="text" oninput="render()"></div>
+        <div class="fg" style="margin-bottom:6px"><label>เลขที่บัญชี</label><input id="f-bacno" type="text" oninput="saveCoField('f-bacno',this.value);render()"></div>
       </div>
 
       <div id="iv-extra" style="display:none">
-        <div class="sec">ตัวเลือกเอกสาร</div>
-        <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:8px">
+        <div class="sec">ต้นฉบับ</div>
+        <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:10px">
           <div style="display:flex;align-items:center;gap:10px;background:var(--sur2);border-radius:8px;padding:10px 12px;">
-            <input type="checkbox" id="ck-r" onchange="render()" checked style="width:18px;height:18px;flex-shrink:0;accent-color:var(--acc);">
+            <input type="checkbox" id="ck-or" onchange="render()" checked style="width:18px;height:18px;flex-shrink:0;accent-color:var(--acc);">
             <span style="font-size:13px;color:var(--tx);">ต้นฉบับใบเสร็จรับเงิน</span>
           </div>
           <div style="display:flex;align-items:center;gap:10px;background:var(--sur2);border-radius:8px;padding:10px 12px;">
-            <input type="checkbox" id="ck-t" onchange="render()" checked style="width:18px;height:18px;flex-shrink:0;accent-color:var(--acc);">
+            <input type="checkbox" id="ck-ot" onchange="render()" checked style="width:18px;height:18px;flex-shrink:0;accent-color:var(--acc);">
             <span style="font-size:13px;color:var(--tx);">ต้นฉบับใบกำกับภาษี</span>
           </div>
           <div style="display:flex;align-items:center;gap:10px;background:var(--sur2);border-radius:8px;padding:10px 12px;">
-            <input type="checkbox" id="ck-d" onchange="render()" style="width:18px;height:18px;flex-shrink:0;accent-color:var(--acc);">
+            <input type="checkbox" id="ck-od" onchange="render()" style="width:18px;height:18px;flex-shrink:0;accent-color:var(--acc);">
             <span style="font-size:13px;color:var(--tx);">ต้นฉบับใบส่งของ</span>
           </div>
           <div style="display:flex;align-items:center;gap:10px;background:var(--sur2);border-radius:8px;padding:10px 12px;">
-            <input type="checkbox" id="ck-copy" onchange="render()" style="width:18px;height:18px;flex-shrink:0;accent-color:var(--acc);">
-            <span style="font-size:13px;color:var(--tx);">สำเนา</span>
+            <input type="checkbox" id="ck-on" onchange="render()" style="width:18px;height:18px;flex-shrink:0;accent-color:var(--acc);">
+            <span style="font-size:13px;color:var(--tx);">ต้นฉบับใบแจ้งหนี้</span>
+          </div>
+        </div>
+        <div class="sec">สำเนา</div>
+        <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:8px">
+          <div style="display:flex;align-items:center;gap:10px;background:var(--sur2);border-radius:8px;padding:10px 12px;">
+            <input type="checkbox" id="ck-cr" onchange="render()" style="width:18px;height:18px;flex-shrink:0;accent-color:var(--acc);">
+            <span style="font-size:13px;color:var(--tx);">สำเนาใบเสร็จรับเงิน</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;background:var(--sur2);border-radius:8px;padding:10px 12px;">
+            <input type="checkbox" id="ck-ct" onchange="render()" style="width:18px;height:18px;flex-shrink:0;accent-color:var(--acc);">
+            <span style="font-size:13px;color:var(--tx);">สำเนาใบกำกับภาษี</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;background:var(--sur2);border-radius:8px;padding:10px 12px;">
+            <input type="checkbox" id="ck-cd" onchange="render()" style="width:18px;height:18px;flex-shrink:0;accent-color:var(--acc);">
+            <span style="font-size:13px;color:var(--tx);">สำเนาใบส่งของ</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;background:var(--sur2);border-radius:8px;padding:10px 12px;">
+            <input type="checkbox" id="ck-cn" onchange="render()" style="width:18px;height:18px;flex-shrink:0;accent-color:var(--acc);">
+            <span style="font-size:13px;color:var(--tx);">สำเนาใบแจ้งหนี้</span>
           </div>
         </div>
         <div class="sec">หมายเหตุท้ายเอกสาร</div>
@@ -539,6 +633,7 @@ table.iv-tbl td.r{text-align:right;}
 <!-- COMPANY SETTINGS MODAL -->
 <div class="modal-overlay" id="co-modal" onclick="closeCompanySettings()">
   <div class="modal-sheet" onclick="event.stopPropagation()" style="max-height:85vh;overflow-y:auto;">
+    <div class="modal-handle"></div>
     <div class="modal-title">⚙️ ข้อมูลบริษัท / ร้านค้า</div>
     <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px;">
       <div style="display:flex;flex-direction:column;gap:3px;">
@@ -588,7 +683,38 @@ table.iv-tbl td.r{text-align:right;}
   </div>
 </div>
 
-<script>
+<script>var _coData = {
+  cname:'ส.ไทยเจริญ (สำนักงานใหญ่)',
+  cen:'S. Thai Chareon (Head Office)',
+  caddr:'147/9 หมู่บ้านเธียรเกษม หมู่1 ถ.เทพารักษ์ ต.เทพารักษ์ อ.เมือง จ.สมุทรปราการ 10270',
+  ctel:'086-332-3929',
+  ctax:'3 1009 01737 53 8 (เดิม 1 01732572 8)',
+  creg:'อ. 8588',
+  bank:'',
+  bacname:'',
+  bacno:''
+};
+var _formCache = {};
+
+function saveFormFields(){
+  ['f-cname','f-cen','f-caddr','f-ctel','f-ctax','f-creg',
+   'f-docno','f-docbook','f-date','f-due','f-term',
+   'f-bname','f-baddr','f-btax','f-disc','f-dtyp','f-vat','f-sig',
+   'f-bank','f-bacname','f-bacno'].forEach(function(id){
+    var el=document.getElementById(id);
+    if(el)_formCache[id]=el.value;
+  });
+}
+
+function restoreFormFields(){
+  Object.keys(_formCache).forEach(function(id){
+    var el=document.getElementById(id);
+    if(el&&_formCache[id]!==undefined)el.value=_formCache[id];
+  });
+  renderItems();renderConds();renderRemarks();
+}
+
+
 var KEY='dm3_docs';
 var currentDocId=null;
 var dtype='quotation';
@@ -608,7 +734,9 @@ function saveDocs(d){localStorage.setItem(KEY,JSON.stringify(d));}
 function toast(msg,t){var el=document.getElementById('toast');el.textContent=msg;el.className='toast on'+(t?' '+t:'');clearTimeout(el._t);var dur=(t==='err')?5000:3000;el._t=setTimeout(function(){el.classList.remove('on');},dur);}
 
 function bahtText(n){
-  var num=Math.round(+n||0);
+  var val = Math.round((+n||0)*100); // work in satang
+  var baht = Math.floor(val/100);
+  var satang = val%100;
   var u=['','หนึ่ง','สอง','สาม','สี่','ห้า','หก','เจ็ด','แปด','เก้า'];
   var t=['','สิบ','ยี่สิบ','สามสิบ','สี่สิบ','ห้าสิบ','หกสิบ','เจ็ดสิบ','แปดสิบ','เก้าสิบ'];
   function r(n){
@@ -620,8 +748,11 @@ function bahtText(n){
     if(n<1000000)return r(Math.floor(n/100000))+'แสน'+r(n%100000);
     return r(Math.floor(n/1000000))+'ล้าน'+r(n%1000000);
   }
-  if(num===0)return 'ศูนย์บาทถ้วน';
-  return r(num)+'บาทถ้วน';
+  if(val===0) return 'ศูนย์บาทถ้วน';
+  var result = r(baht)+'บาท';
+  if(satang>0) result += r(satang)+'สตางค์';
+  else result += 'ถ้วน';
+  return result;
 }
 
 // ── SCREENS ──
@@ -702,6 +833,15 @@ function renderHome(){
 function showNewModal(){document.getElementById('new-modal').classList.add('on');}
 function closeNewModal(){document.getElementById('new-modal').classList.remove('on');}
 
+function applyFieldValues(vals){
+  // Set both DOM and _formCache simultaneously
+  Object.keys(vals).forEach(function(id){
+    var el=document.getElementById(id);
+    if(el) el.value=vals[id];
+    _formCache[id]=vals[id];
+  });
+}
+
 function createDoc(t){
   closeNewModal();
   currentDocId=null;
@@ -709,23 +849,48 @@ function createDoc(t){
   items=[{d:'',q:1,u:0},{d:'',q:1,u:0}];
   conds=['ชำระมัดจำ 50% ในวันสั่งจ้าง','ชำระส่วนที่เหลือ 50% ในวันส่งมอบงาน','กำหนดยืนราคาภายใน 30 วัน','ราคานี้ไม่รวมภาษีมูลค่าเพิ่ม 7%'];
   remarks=['ได้รับรายการช่างต้องถูกต้องเรียบร้อยแล้ว หากมีการเสียหายแจ้งภายใน 3 วัน','ผู้ซื้อตกลงจ่ายอัตราดอกเบี้ยร้อยละ 2 ต่อเดือน ในกรณีที่ผิดนัดชำระ','สินค้าเป็นของผู้ขายจนกว่าผู้ซื้อจะชำระเงินเรียบร้อยแล้ว'];
+
   var today=new Date().toISOString().split('T')[0];
+  var yr=new Date().getFullYear();
   var docs=getDocs();
   var n=String(docs.length+1).padStart(3,'0');
-  var yr=new Date().getFullYear();
-  var prefix={quotation:'QT',invoice:'IV',receipt:'RC'}[t]||'DOC';
-  clearFields();
-  fillCompanyToForm();
-  document.getElementById('f-docno').value=prefix+'-'+yr+'-'+n;
-  document.getElementById('f-date').value=today;
-  document.getElementById('f-due').value=today;
-  document.getElementById('f-vat').value='7';
+  var prefix={quotation:'QT',invoice:'IV'}[t]||'DOC';
+
+  // Hardcoded company values - no variables, no localStorage
+  var fillVals={
+    'f-cname': 'ส.ไทยเจริญ (สำนักงานใหญ่)',
+    'f-cen':   'S. Thai Chareon (Head Office)',
+    'f-caddr': '147/9 หมู่บ้านเธียรเกษม หมู่1 ถ.เทพารักษ์ ต.เทพารักษ์ อ.เมือง จ.สมุทรปราการ 10270',
+    'f-ctel':  '086-332-3929',
+    'f-ctax':  '3 1009 01737 53 8 (เดิม 1 01732572 8)',
+    'f-creg':  'อ. 8588',
+    'f-bank':'', 'f-bacname':'', 'f-bacno':'',
+    'f-docno': prefix+'-'+yr+'-'+n,
+    'f-date':  today, 'f-due': today,
+    'f-docbook':'', 'f-bname':'', 'f-baddr':'', 'f-btax':'',
+    'f-disc':'', 'f-sig':'', 'f-filename':''
+  };
+
+  // Pre-fill cache AND try setting DOM now (belt+suspenders)
+  Object.keys(fillVals).forEach(function(id){
+    _formCache[id]=fillVals[id];
+    var el=document.getElementById(id);
+    if(el&&fillVals[id]!==undefined)el.value=fillVals[id];
+  });
+
   setEditorType(t);
   renderItems();renderConds();renderRemarks();
-  render();
   showScreen('screen-editor');
-  setTimeout(scaleDoc,100);
+
+  // Apply to DOM after screen is visible
+  setTimeout(function(){
+    applyFieldValues(fillVals);
+    document.getElementById('f-vat').value='7';
+    render();
+    setTimeout(scaleDoc,50);
+  },50);
 }
+
 
 function openDoc(id){
   var docs=getDocs();
@@ -762,10 +927,12 @@ function setEditorType(t){
 }
 
 function showView(v){
+  if(v==='prev') saveFormFields();
   var eb=document.getElementById('editor-body');
   eb.className='editor-body '+(v==='form'?'show-form':'show-prev');
   document.getElementById('vt-form').classList.toggle('on',v==='form');
   document.getElementById('vt-prev').classList.toggle('on',v==='prev');
+  if(v==='form') restoreFormFields();
   setTimeout(scaleDoc,50);
 }
 
@@ -809,6 +976,7 @@ function renderQ(t){
   document.getElementById('doc').innerHTML=
     '<div class="q-wrap">'+
     '<div class="q-co"><div class="q-co-name">'+esc(cname)+'</div>'+
+    (g('f-cen')?'<div style="font-size:13px;color:#444;">'+esc(g('f-cen'))+'</div>':'')+
     '<div class="q-co-addr">'+esc(g('f-caddr')).replace(/\n/g,' ')+(g('f-ctel')?'<br>M. '+esc(g('f-ctel')):'')+'</div></div>'+
     '<div class="q-divider"></div>'+
     (dateThai?'<div class="q-date">'+dateThai+'</div>':'')+
@@ -834,13 +1002,23 @@ function renderIV(t){
   var ctel  = g('f-ctel')||'';
 
   // Document type lines
-  var parts=[];
-  if(chk('ck-r')) parts.push('ต้นฉบับใบเสร็จรับเงิน');
-  if(chk('ck-t')) parts.push('ต้นฉบับใบกำกับภาษี');
-  if(chk('ck-d')) parts.push('ต้นฉบับใบส่งของ');
-  if(chk('ck-copy')) parts.push('สำเนา');
-  if(!parts.length) parts.push(dtype==='receipt'?'ใบเสร็จรับเงิน':'ใบกำกับภาษี');
-  var typeLinesHtml = parts.map(function(p){ return p; }).join(' &nbsp;/&nbsp; ');
+  var originals=[];
+  if(chk('ck-or')) originals.push('ต้นฉบับใบเสร็จรับเงิน');
+  if(chk('ck-ot')) originals.push('ต้นฉบับใบกำกับภาษี');
+  if(chk('ck-od')) originals.push('ต้นฉบับใบส่งของ');
+  if(chk('ck-on')) originals.push('ต้นฉบับใบแจ้งหนี้');
+  var copies=[];
+  if(chk('ck-cr')) copies.push('สำเนาใบเสร็จรับเงิน');
+  if(chk('ck-ct')) copies.push('สำเนาใบกำกับภาษี');
+  if(chk('ck-cd')) copies.push('สำเนาใบส่งของ');
+  if(chk('ck-cn')) copies.push('สำเนาใบแจ้งหนี้');
+  var allParts=originals.concat(copies);
+  if(!allParts.length) allParts.push('ใบกำกับภาษี');
+  // Build 2 lines: originals on line1, copies on line2
+  var typeLinesHtml='';
+  if(originals.length) typeLinesHtml+=originals.join(' / ')+'<br>';
+  if(copies.length) typeLinesHtml+=copies.join(' / ')+'<br>';
+  if(!originals.length&&!copies.length) typeLinesHtml='ใบกำกับภาษี<br>';
 
   // ── Shared cell style ──
   var b  = 'border:1px solid #000;';
@@ -1078,17 +1256,40 @@ function setData(data){
            disc:'f-disc',dtyp:'f-dtyp',vat:'f-vat',sig:'f-sig',
            bank:'f-bank',bacname:'f-bacname',bacno:'f-bacno'};
   Object.keys(map).forEach(function(k){var el=document.getElementById(map[k]);if(el&&f[k]!==undefined)el.value=f[k];});
-  var ckr=document.getElementById('ck-r');if(ckr)ckr.checked=f.ckr!==false;
-  var ckt=document.getElementById('ck-t');if(ckt)ckt.checked=f.ckt!==false;
-  var ckd=document.getElementById('ck-d');if(ckd)ckd.checked=!!f.ckd;
-  var ckcopy=document.getElementById('ck-copy');if(ckcopy)ckcopy.checked=!!f.ckcopy;
+  var _ckmap={
+    'ck-or':'ckor','ck-ot':'ckot','ck-od':'ckod','ck-on':'ckon',
+    'ck-cr':'ckcr','ck-ct':'ckct','ck-cd':'ckcd','ck-cn':'ckcn'
+  };
+  Object.keys(_ckmap).forEach(function(id){
+    var el=document.getElementById(id);
+    if(el) el.checked=(id==='ck-or'||id==='ck-ot')?f[_ckmap[id]]!==false:!!f[_ckmap[id]];
+  });
   renderItems();renderConds();renderRemarks();render();
+}
+
+function getFilename(){
+  // Custom filename takes priority
+  var custom = g('f-filename').trim();
+  if(custom) return custom;
+  // Fallback: customer name + doc number
+  var bname = g('f-bname')||'';
+  var docno = g('f-docno')||'';
+  if(bname && docno) return bname+' ('+docno+')';
+  if(bname) return bname;
+  if(docno) return docno;
+  return 'เอกสาร';
+}
+
+function updateFilenamePreview(){
+  var name = getFilename();
+  var el = document.getElementById('filename-preview');
+  if(el) el.textContent = '📄 ไฟล์: '+name+'.pdf';
 }
 
 function saveDoc(){
   var data=getData();
   var t=calc();
-  var name=g('f-docno')||g('f-cname')||'ไม่มีชื่อ';
+  var name=getFilename();
   var docs=getDocs();
   var idx=docs.findIndex(function(d){return d.id===currentDocId;});
   var entry={
@@ -1108,41 +1309,37 @@ function saveDoc(){
 // ── EXPORT ──
 function loadScript(src,cb){var s=document.createElement('script');s.src=src;s.onload=cb;s.onerror=function(){toast('❌ โหลด library ไม่ได้ (ต้องต่อเน็ต)','err');};document.head.appendChild(s);}
 
-function saveToDevice(){
-  toast('⏳ กำลังสร้าง PDF เพื่อบันทึกลงเครื่อง…','');
-  // Make sure doc is visible before capture
+function makePDF(cb){
   var eb=document.getElementById('editor-body');
-  var prevClass=eb?eb.className:'';
+  var prev=eb?eb.className:'';
   if(eb)eb.className='editor-body show-prev';
   function go(){
     setTimeout(function(){
-    html2canvas(document.getElementById('doc'),{scale:2,backgroundColor:'#fff',logging:false,useCORS:true}).then(function(c){
-      if(eb)eb.className=prevClass;
-      var P=window.jspdf.jsPDF;
-      var pdf=new P({orientation:'portrait',unit:'mm',format:'a4'});
-      var pageW=210,pageH=297,margin=10,imgW=pageW-margin*2;
-      var pxPerMm=c.width/imgW;
-      var sliceH=Math.floor((pageH-margin*2)*pxPerMm);
-      var y=0,page=0;
-      while(y<c.height){
-        if(page>0)pdf.addPage();
-        var slice=Math.min(sliceH,c.height-y);
-        var c2=document.createElement('canvas');c2.width=c.width;c2.height=slice;
-        c2.getContext('2d').drawImage(c,0,y,c.width,slice,0,0,c.width,slice);
-        pdf.addImage(c2.toDataURL('image/jpeg',0.95),'JPEG',margin,margin,imgW,slice/pxPerMm);
-        y+=sliceH;page++;
-      }
-      var name=(g('f-docno')||'document')+'.pdf';
-      // On iOS: triggers share sheet → Save to Files
-      var blob=pdf.output('blob');
-      var url=URL.createObjectURL(blob);
-      var a=document.createElement('a');
-      a.href=url;a.download=name;
-      document.body.appendChild(a);a.click();
-      setTimeout(function(){document.body.removeChild(a);URL.revokeObjectURL(url);},1000);
-      toast('✅ PDF พร้อมแล้ว — กด "Save to Files" เพื่อบันทึกลงเครื่อง','ok');
-    }).catch(function(e){if(eb)eb.className=prevClass;toast('❌ '+e.message,'err');});
-    },100);
+      var docEl=document.getElementById('doc');
+      // Temp fix width for capture
+      var ow=docEl.style.width;
+      docEl.style.width='794px';
+      html2canvas(docEl,{scale:2,backgroundColor:'#fff',logging:false,useCORS:true}).then(function(c){
+        docEl.style.width=ow;
+        if(eb)eb.className=prev;
+        var P=window.jspdf.jsPDF;
+        var pdf=new P({orientation:'portrait',unit:'mm',format:'a4'});
+        var imgW=190,margin=10;
+        var pxPerMm=c.width/imgW;
+        var pageImgH=(297-margin*2)*pxPerMm;
+        var y=0,page=0;
+        while(y<c.height){
+          if(page>0)pdf.addPage();
+          var slice=Math.min(pageImgH,c.height-y);
+          var c2=document.createElement('canvas');
+          c2.width=c.width;c2.height=slice;
+          c2.getContext('2d').drawImage(c,0,y,c.width,slice,0,0,c.width,slice);
+          pdf.addImage(c2.toDataURL('image/jpeg',0.95),'JPEG',margin,margin,imgW,slice/pxPerMm);
+          y+=pageImgH;page++;
+        }
+        cb(pdf);
+      }).catch(function(e){if(eb)eb.className=prev;toast('❌ '+e.message,'err');});
+    },150);
   }
   if(window.html2canvas&&window.jspdf){go();return;}
   loadScript('https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js',function(){
@@ -1150,30 +1347,59 @@ function saveToDevice(){
   });
 }
 
+function saveToDevice(){
+  toast('⏳ กำลังสร้าง PDF…','');
+  makePDF(function(pdf){
+    var name=getFilename()+'.pdf';
+    var blob=pdf.output('blob');
+    // iOS Safari: use Web Share API if available
+    if(navigator.share && navigator.canShare){
+      var file=new File([blob],name,{type:'application/pdf'});
+      if(navigator.canShare({files:[file]})){
+        navigator.share({files:[file],title:name})
+          .then(function(){toast('✅ แชร์/บันทึกสำเร็จ','ok');})
+          .catch(function(){});
+        return;
+      }
+    }
+    // Fallback: download link
+    var url=URL.createObjectURL(blob);
+    var a=document.createElement('a');
+    a.href=url;a.download=name;a.style.display='none';
+    document.body.appendChild(a);a.click();
+    setTimeout(function(){document.body.removeChild(a);URL.revokeObjectURL(url);},2000);
+    toast('✅ กำลังบันทึก PDF…','ok');
+  });
+}
+
 function exportPDF(){
   toast('⏳ กำลังสร้าง PDF…','');
-  function go(){
-    html2canvas(document.getElementById('doc'),{scale:2,backgroundColor:'#fff',logging:false}).then(function(c){
-      var P=window.jspdf.jsPDF;
-      var pdf=new P({orientation:'portrait',unit:'mm',format:'a4'});
-      var pageW=210,pageH=297,margin=10,imgW=pageW-margin*2;
-      var pxPerMm=c.width/imgW;
-      var sliceH=Math.floor((pageH-margin*2)*pxPerMm);
-      var y=0,page=0;
-      while(y<c.height){
-        if(page>0)pdf.addPage();
-        var slice=Math.min(sliceH,c.height-y);
-        var c2=document.createElement('canvas');c2.width=c.width;c2.height=slice;
-        c2.getContext('2d').drawImage(c,0,y,c.width,slice,0,0,c.width,slice);
-        pdf.addImage(c2.toDataURL('image/jpeg',0.95),'JPEG',margin,margin,imgW,slice/pxPerMm);
-        y+=sliceH;page++;
-      }
-      pdf.save((g('f-docno')||'doc')+'.pdf');
-      toast('✅ บันทึก PDF (A4) แล้ว','ok');
-    }).catch(function(e){toast('❌ '+e.message,'err');});
-  }
-  if(window.html2canvas&&window.jspdf){go();return;}
-  loadScript('https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js',function(){loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js',go);});
+  makePDF(function(pdf){
+    pdf.save(getFilename()+'.pdf');
+    toast('✅ บันทึก PDF แล้ว','ok');
+  });
+}
+
+function sharePDF(){
+  toast('⏳ กำลังเตรียม PDF เพื่อแชร์…','');
+  makePDF(function(pdf){
+    var name=getFilename()+'.pdf';
+    var blob=pdf.output('blob');
+    var file=new File([blob],name,{type:'application/pdf'});
+    if(navigator.share && navigator.canShare && navigator.canShare({files:[file]})){
+      navigator.share({
+        files:[file],
+        title:name,
+        text:'เอกสารจาก ส.ไทยเจริญ'
+      }).then(function(){toast('✅ แชร์สำเร็จ','ok');})
+        .catch(function(e){if(e.name!=='AbortError')toast('❌ '+e.message,'err');});
+    } else {
+      // Fallback: open in new tab so user can share manually
+      var url=URL.createObjectURL(blob);
+      window.open(url,'_blank');
+      toast('✅ เปิด PDF แล้ว — กด Share เพื่อส่งไป LINE','ok');
+    }
+  });
 }
 
 function exportJPG(){
@@ -1184,7 +1410,7 @@ function exportJPG(){
       var ctx=a4.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,2480,3508);
       ctx.drawImage(c,0,0,2480,2480*c.height/c.width);
       var a=document.createElement('a');a.href=a4.toDataURL('image/jpeg',0.95);
-      a.download=(g('f-docno')||'doc')+'.jpg';a.click();
+      a.download=getFilename()+'.jpg';a.click();
       toast('✅ บันทึก JPG (A4) แล้ว','ok');
     }).catch(function(e){toast('❌ '+e.message,'err');});
   }
@@ -1193,17 +1419,25 @@ function exportJPG(){
 }
 
 function doPrint(){
-  toast('🖨 เปิดเมนูพิมพ์ — เลือกเครื่องพิมพ์ Bluetooth ได้เลย','ok');
-  // Switch to preview on mobile before printing
-  var eb=document.getElementById('editor-body');
-  if(eb){eb.className='editor-body show-prev';}
+  var docEl = document.getElementById('doc');
+  var frame = document.getElementById('print-frame');
+  // Clone doc content into print frame
+  frame.innerHTML = docEl.outerHTML;
+  frame.style.display = 'block';
+  // Fix clone id to avoid conflict
+  var clone = frame.querySelector('#doc');
+  if(clone){
+    clone.style.width='190mm';
+    clone.style.fontSize='11px';
+    clone.style.boxShadow='none';
+    clone.style.margin='10mm';
+    clone.style.padding='0';
+    clone.style.minHeight='auto';
+  }
   setTimeout(function(){
     window.print();
-    // Restore form view after
-    setTimeout(function(){
-      if(eb){eb.className='editor-body show-form';}
-    },1000);
-  },300);
+    setTimeout(function(){ frame.style.display='none'; frame.innerHTML=''; },500);
+  },200);
 }
 
 // ── COMPANY PROFILE ──
@@ -1247,43 +1481,44 @@ function saveCompanySettings(){
     bacname:document.getElementById('co-bacname').value,
     bacno:document.getElementById('co-bacno').value
   };
-  try{
-    localStorage.setItem('dm3_company',JSON.stringify(co));
-    var verify = localStorage.getItem('dm3_company');
-    if(!verify){ toast('❌ บันทึกไม่ได้ - Safari อาจบล็อก localStorage','err'); return; }
-    closeCompanySettings();
-    toast('✅ บันทึกแล้ว: '+co.cname,'ok');
-  }catch(e){
-    alert('บันทึกไม่ได้: '+e.message+'\n\nลอง: Settings > Safari > Advanced > Website Data > ลบข้อมูล แล้วลองใหม่');
+  if(!co.cname || co.cname.trim()===''){
+    toast('⚠️ กรุณากรอกชื่อบริษัทก่อนบันทึก','err');
+    return;
   }
+  // Merge with defaults (keep hardcoded values for empty fields)
+  Object.keys(co).forEach(function(k){ if(co[k]) _coData[k]=co[k]; });
+  try{ localStorage.setItem('dm3_company', JSON.stringify(_coData)); }catch(e){}
+  closeCompanySettings();
+  toast('✅ บันทึกแล้ว: '+co.cname,'ok');
+}
+
+var _coData = {};
+
+function saveCoField(field, value){
+  _coData[field] = value;
+  try{ localStorage.setItem('dm3_company', JSON.stringify(_coData)); }catch(e){}
 }
 
 function fillCompanyToForm(){
-  var raw = localStorage.getItem('dm3_company');
-  if(!raw){ return; } // ไม่มีข้อมูล ไม่ต้องทำอะไร
-  var co;
-  try{ co=JSON.parse(raw); }catch(e){ return; }
-  // Fill ทุก field ที่มีข้อมูล ไม่ว่าจะว่างหรือไม่
-  var fields = [
-    ['f-cname',   co.cname   || ''],
-    ['f-cen',     co.cen     || ''],
-    ['f-caddr',   co.caddr   || ''],
-    ['f-ctel',    co.ctel    || ''],
-    ['f-ctax',    co.ctax    || ''],
-    ['f-creg',    co.creg    || ''],
-    ['f-bank',    co.bank    || ''],
-    ['f-bacname', co.bacname || ''],
-    ['f-bacno',   co.bacno   || '']
-  ];
-  var filled = false;
-  fields.forEach(function(pair){
-    var el = document.getElementById(pair[0]);
-    if(el){ el.value = pair[1]; if(pair[1]) filled = true; }
+  // Start with hardcoded defaults, only override with localStorage if it has real data
+  var co = _coData;
+  try{
+    var raw = localStorage.getItem('dm3_company');
+    if(raw){
+      var saved=JSON.parse(raw);
+      if(saved && saved.cname && saved.cname.trim()!==''){
+        co=saved; _coData=saved; // Only override if user has real saved data
+      }
+    }
+  }catch(e){}
+  [['f-cname',co.cname],['f-cen',co.cen],['f-caddr',co.caddr],
+   ['f-ctel',co.ctel],['f-ctax',co.ctax],['f-creg',co.creg],
+   ['f-bank',co.bank],['f-bacname',co.bacname],['f-bacno',co.bacno]
+  ].forEach(function(pair){
+    var el=document.getElementById(pair[0]);
+    if(el&&pair[1])el.value=pair[1];
   });
-  if(filled) toast('✅ เติมข้อมูลบริษัทแล้ว','ok');
 }
-
-// ── INIT ──
 function scaleDoc(){
   var scaler=document.getElementById('doc-scaler');
   var prev=document.getElementById('prev-panel');
@@ -1300,5 +1535,6 @@ function scaleDoc(){
   window.addEventListener('resize', scaleDoc);
 })();
 </script>
+<div id="print-frame" style="display:none;position:fixed;top:0;left:0;width:210mm;background:#fff;"></div>
 </body>
 </html>
